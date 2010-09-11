@@ -1,10 +1,66 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
-        "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<head>
-    <title></title>
-</head>
-<body>
+<!--
+  ~ Copyright (c) 2010 Nicolas MARTIGNOLE
+  ~
+  ~       This file is part of GeekEvent.
+  ~
+  ~       GeekEvent is free software: you can redistribute it and/or modify
+  ~       it under the terms of the GNU Affero General Public License as published by
+  ~       the Free Software Foundation, either version 3 of the License, or
+  ~       (at your option) any later version.
+  ~
+  ~       GeekEvent is distributed in the hope that it will be useful,
+  ~       but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~       MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  ~       GNU Affero General Public License for more details.
+  ~
+  ~       You should have received a copy of the GNU Affero General Public License
+  ~       along with Foobar.  If not, see <http://www.gnu.org/licenses/>.
+  ~
+  ~       See http://touilleur-express.fr/ for more details.
+  -->
 
-</body>
-</html>
+#{extends 'main.html' /}
+#{set title:'GeekEvent - Start page' /}
+
+#{set pageTitle:'GeekEvent' /}
+
+
+<div id="content">
+    <div id="mainContent">
+        <section>
+            <h3>S'authentifier</h3>
+            
+            #{if flash.success}
+                <div class="successbox">${flash.success}</div>
+            #{/if}
+            #{if flash.error}
+                <div class="errorbox">${flash.error}</div>
+            #{/if}
+
+            #{ifnot user}
+                #{form @Application.authenticate()}
+
+                <p>
+                    <label for="email">Votre adresse email</label>
+                    <input name="email" id="email" type="email" required/>
+                </p>
+                 <p>
+                    <label for="password">Votre mot de passe</label>
+                    <input name="password" id="password" type="password" required/>
+                </p>
+
+                <p><input type="submit" value="S'inscrire"/></p>
+
+                <em>Essayez les comptes de démonstration nicolas@test.fr/demo et demo@test.fr/demo</em>
+
+                #{/form}
+            #{/ifnot}
+            #{else}
+                <h3>Bonjour ${user.firstName}</h3>
+            #{/else}
+
+        </section>
+    </div>
+
+
+</div>

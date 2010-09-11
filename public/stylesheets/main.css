@@ -157,10 +157,11 @@ nav ul li.subscribe a {
 }
 
 #mainContent {
-    float:left;
     display: table-cell;
     width: 620px;
     padding-right: 22px;
+    padding-top:50px;
+    color:black;
 }
 
 #registerForm{
@@ -249,9 +250,7 @@ aside {
 /*------------------------------
 =COMMENT FORM
 ------------------------------*/
-form {
-    color: white;
-}
+
 
 form p {
     display: table;
@@ -357,4 +356,43 @@ footer ul {
 
 footer ul li a {
     display: block;
+}
+
+.highlight_decorated {
+    background: #feffdb;
+    border: 1px solid #ffddb3;
+    margin: 0 0 30px;
+    padding: 10px;
+    overflow: auto;
+    -moz-border-radius: 4px;
+    -webkit-border-radius: 4px;
+}
+
+.highlight {
+    background: none repeat scroll 0 0 #FFFF66;
+    color: black;
+    font-weight: bold;
+}
+
+.errorbox {
+    background: #FCF5F5;
+    border: 1px solid #db9ea0;
+    margin: 0 0 30px;
+    padding: 10px;
+    -moz-border-radius: 4px;
+    -webkit-border-radius: 4px;
+}
+
+.error {
+    color: #FC3535;
+    padding-right: 10px;
+}
+
+.successbox {
+    background: #e5f4e1;
+    border: 1px solid #d1e7ca;
+    margin: 0 0 30px;
+    padding: 10px;
+    -moz-border-radius: 4px;
+    -webkit-border-radius: 4px;
 }

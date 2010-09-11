@@ -1,4 +1,4 @@
-JugEvent(1):
+JugEvent(j1):
     title: Soirée NoSQL
     abstractContent: Découvrez la soirée NoSQL
     description: >
@@ -6,28 +6,30 @@ JugEvent(1):
     date: 2010-09-15 19:00:00
     totalSlots: 210
 
-JugEvent(2):
+JugEvent(j2):
     title: Jug Summer Camp
     abstractContent: Une journée pour la rentrée.
     description: Présentation par O.Mallassi et M.Filguiere
     date: 2010-09-10 09:00:00
     totalSlots: 210
 
-JugEvent(3):
-    title: Soirée Java Avancé
-    abstractContent: Présentation par Olivier Croisier
-    description: Découvrez une présentation poussée sur Java, sur les dernières technologies, blabla vlaa..
+JugEvent(j3):
+    title: Soirée créé par Nicolas
+    abstractContent: Un exemple de soirée créé par l'utilisateur nicolas@test.fr
+    description: Voici un exemple d'événement créé par l'utilisateur nicolas@test.fr
     date: 2010-09-10 09:00:00
     totalSlots: 210
 
-JugUser(4):
+JugUser(u4):
     email: nicolas@test.fr
     password: test123
     firstName: Nicolas
     lastName: Martignole
+    creationDate: 2010-09-11 12:00:22
 
-JugUser(5):
+JugUser(u5):
     email: demo@test.fr
     password: demo
     firstName: Demo
-    lastName: User    
+    lastName: User
+    creationDate: 2010-09-12 08:00:22

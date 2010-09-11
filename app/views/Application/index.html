@@ -1,85 +1,49 @@
-#{extends 'main.html' /}
-#{set title:'JugEvent Play' /}
-
-#{set pageTitle:'JugEvent Play!' /}
-
-
 <!--
   ~ Copyright (c) 2010 Nicolas MARTIGNOLE
   ~
-  ~     This file is part of GeekEvent.
+  ~       This file is part of GeekEvent.
   ~
-  ~     GeekEvent is free software: you can redistribute it and/or modify
-  ~     it under the terms of the GNU Affero General Public License as published by
-  ~     the Free Software Foundation, either version 3 of the License, or
-  ~     (at your option) any later version.
+  ~       GeekEvent is free software: you can redistribute it and/or modify
+  ~       it under the terms of the GNU Affero General Public License as published by
+  ~       the Free Software Foundation, either version 3 of the License, or
+  ~       (at your option) any later version.
   ~
-  ~     Foobar is distributed in the hope that it will be useful,
-  ~     but WITHOUT ANY WARRANTY; without even the implied warranty of
-  ~     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-  ~     GNU Affero General Public License for more details.
+  ~       GeekEvent is distributed in the hope that it will be useful,
+  ~       but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~       MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  ~       GNU Affero General Public License for more details.
   ~
-  ~     You should have received a copy of the GNU Affero General Public License
-  ~     along with Foobar.  If not, see <http://www.gnu.org/licenses/>.
+  ~       You should have received a copy of the GNU Affero General Public License
+  ~       along with Foobar.  If not, see <http://www.gnu.org/licenses/>.
   ~
-  ~     See http://touilleur-express.fr/ for more details.
+  ~       See http://touilleur-express.fr/ for more details.
   -->
+
+#{extends 'main.html' /}
+#{set title:'GeekEvent - Start page' /}
+
+#{set pageTitle:'GeekEvent' /}
+
 
 <div id="content">
     <div id="mainContent">
         <section>
+            <h3>Accueil</h3>
             #{if flash.success}
-            <strong>${flash.success}</strong>
+                <div class="successbox">${flash.success}</div>
             #{/if}
-            #{list items:jugEvents, as:'jugEvent'}
-            <article class="blogPost">
-                <header>
-                    <h2>${jugEvent.title}</h2>
+            #{if flash.error}
+                <div class="errorbox">${flash.error}</div>
+            #{/if}
+            #{ifnot session.user}
+                <h3>S'authentifier...</h3>
+            #{/ifnot}
+            #{else}
+                <p>Bonjour ${session.user-f}</p>
+            #{/else}
 
-                    <p>
-                        <time datetime="${jugEvent.date}">${jugEvent.date?.format('dd/MM/yyyy HH:mm')}</time>
-                        Places libres: ${jugEvent.totalSlots} #{a @Application.bookEvent(jugEvent.id)}Inscrivez-moi
-                        !#{/a}
-                    </p>
-                </header>
-                <div>
-                    <p>${jugEvent.description}</p>
-                </div>
-            </article>
         </section>
-        #{/list}
     </div>
-    #{ifnot user}
-    <div id="registerForm">
-        #{form @Application.register()}
-        <h3>S'inscrire</h3>
-
-        <p>
-            <label for="firstName">Votre prénom</label>
-            <input name="firstName" id="firstName" type="text" required/>
-        </p>
-
-        <p>
-            <label for="lastName">Votre nom</label>
-            <input name="lastName" id="lastName" type="text" required/>
-        </p>
-
-        <p>
-            <label for="email">E-mail</label>
-            <input name="email" id="email" type="email" required/>
-        </p>
-
-
-        <p><input type="submit" value="S'inscrire"/></p>
-
-        #{/form}
-    </div>
-    #{/ifnot}
-    #{else}
-    <div id="registerForm">
-        <h3>Bonjour ${user.firstName}</h3>
-    </div>
-    #{/else}
 
 
 </div>

@@ -1,3 +1,24 @@
+<!--
+  ~ Copyright (c) 2010 Nicolas MARTIGNOLE
+  ~
+  ~       This file is part of GeekEvent.
+  ~
+  ~       GeekEvent is free software: you can redistribute it and/or modify
+  ~       it under the terms of the GNU Affero General Public License as published by
+  ~       the Free Software Foundation, either version 3 of the License, or
+  ~       (at your option) any later version.
+  ~
+  ~       GeekEvent is distributed in the hope that it will be useful,
+  ~       but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~       MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  ~       GNU Affero General Public License for more details.
+  ~
+  ~       You should have received a copy of the GNU Affero General Public License
+  ~       along with Foobar.  If not, see <http://www.gnu.org/licenses/>.
+  ~
+  ~       See http://touilleur-express.fr/ for more details.
+  -->
+
 <!DOCTYPE html>
 
 <html>
@@ -17,19 +38,13 @@
 
         <nav>
 		<ul>
-			<li class="selected"><a href="#">Evénements</a></li>
-			<li><a href="#">Mon profil</a></li>
-			<li><a href="#">A propos</a></li>
+			<li class="selected"><a href="/">Mes événements</a></li>
+			<li><a href="#">Créer un événement</a></li>
+			<li><a href="@{'/public/about.html'}">A propos</a></li>
 			<li class="subscribe"><a href="#">RSS</a></li>
 		</ul>
 	</nav>
-        <section id="intro">
-		<header>
-			<h2>Que faites-vous cette semaine ?</h2>
-		</header>
-		<p>Découvrez chaque jour les événements, les rencontres et les soirées de Geek.</p>
-		<img src="@{'/public/images/intro_flower.png'}" alt="Flower" />
-	</section> 
+       
 
         <section>
         #{doLayout /}
