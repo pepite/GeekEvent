@@ -1,0 +1,15 @@
+------------------------------------------------------------------------------
+ GeekEvent v 0.1
+ 10/09/2010
+------------------------------------------------------------------------------
+
+1. Purpose:
+-----------
+GeekEvent is a web application to create, follow and handle events registrations.
+It has been implemented for the Java User Group community. It is also
+a good sample of a real Play! Framework application. 
+
+
+Original author: 
+Nicolas Martignole, nicolas@touilleur-express.fr
+
