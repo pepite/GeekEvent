@@ -1,0 +1,64 @@
+#{extends 'main.html' /}
+#{set title:'JugEvent Play' /}
+
+#{set pageTitle:'JugEvent Play!' /}
+
+
+<div id="content">
+    <div id="mainContent">
+        <section>
+            #{if flash.success}
+            <strong>${flash.success}</strong>
+            #{/if}
+            #{list items:jugEvents, as:'jugEvent'}
+            <article class="blogPost">
+                <header>
+                    <h2>${jugEvent.title}</h2>
+
+                    <p>
+                        <time datetime="${jugEvent.date}">${jugEvent.date?.format('dd/MM/yyyy HH:mm')}</time>
+                        Places libres: ${jugEvent.totalSlots} #{a @Application.bookEvent(jugEvent.id)}Inscrivez-moi
+                        !#{/a}
+                    </p>
+                </header>
+                <div>
+                    <p>${jugEvent.description}</p>
+                </div>
+            </article>
+        </section>
+        #{/list}
+    </div>
+    #{ifnot user}
+    <div id="registerForm">
+        #{form @Application.register()}
+        <h3>S'inscrire</h3>
+
+        <p>
+            <label for="firstName">Votre prénom</label>
+            <input name="firstName" id="firstName" type="text" required/>
+        </p>
+
+        <p>
+            <label for="lastName">Votre nom</label>
+            <input name="lastName" id="lastName" type="text" required/>
+        </p>
+
+        <p>
+            <label for="email">E-mail</label>
+            <input name="email" id="email" type="email" required/>
+        </p>
+
+
+        <p><input type="submit" value="S'inscrire"/></p>
+
+        #{/form}
+    </div>
+    #{/ifnot}
+    #{else}
+    <div id="registerForm">
+        <h3>Bonjour ${user.firstName}</h3>
+    </div>
+    #{/else}
+
+
+</div>

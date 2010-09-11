@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>#{get 'title' /}</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <link rel="stylesheet" type="text/css" media="screen" href="@{'/public/stylesheets/main.css'}">
+        #{get 'moreStyles' /}
+        <link rel="shortcut icon" type="image/png" href="@{'/public/images/favicon.png'}">
+        <script src="@{'/public/javascripts/jquery-1.4.2.min.js'}" type="text/javascript" charset="utf-8"></script>
+        #{get 'moreScripts' /}
+    </head>
+    <body>
+        <header>
+            <h1>#{get 'pageTitle' /}</h1>
+        </header>
+
+        <nav>
+		<ul>
+			<li class="selected"><a href="#">Evénements</a></li>
+			<li><a href="#">Mon profil</a></li>
+			<li><a href="#">A propos</a></li>
+			<li class="subscribe"><a href="#">RSS</a></li>
+		</ul>
+	</nav>
+        <section id="intro">
+		<header>
+			<h2>Que faites-vous cette semaine ?</h2>
+		</header>
+		<p>Découvrez chaque jour les événements, les rencontres et les soirées de Geek.</p>
+		<img src="@{'/public/images/intro_flower.png'}" alt="Flower" />
+	</section> 
+
+        <section>
+        #{doLayout /}
+        </section>
+
+        <footer>
+            <em>Copyright 2010 - N.Martignole </em>
+        </footer>
+    </body>
+</html>

@@ -1,0 +1,33 @@
+JugEvent(1):
+    title: Soirée NoSQL
+    abstractContent: Découvrez la soirée NoSQL
+    description: >
+      Un an que NoSQL fait de plus en plus de buzz. Enfin on challenge le modèle relationnel après 40 années de suprématie ! Reste que c'est un monde en pleine innovation qui est encore difficile à aborder. Cette session proposera une introduction à ces technologies en présentant notamment les grandes catégories de solutions, les principaux patterns d'implémentation et trade-offs ainsi qu'un état du marché
+    date: 2010-09-15 19:00:00
+    totalSlots: 210
+
+JugEvent(2):
+    title: Jug Summer Camp
+    abstractContent: Une journée pour la rentrée.
+    description: Présentation par O.Mallassi et M.Filguiere
+    date: 2010-09-10 09:00:00
+    totalSlots: 210
+
+JugEvent(3):
+    title: Soirée Java Avancé
+    abstractContent: Présentation par Olivier Croisier
+    description: Découvrez une présentation poussée sur Java, sur les dernières technologies, blabla vlaa..
+    date: 2010-09-10 09:00:00
+    totalSlots: 210
+
+JugUser(4):
+    email: nicolas@test.fr
+    password: test123
+    firstName: Nicolas
+    lastName: Martignole
+
+JugUser(5):
+    email: demo@test.fr
+    password: demo
+    firstName: Demo
+    lastName: User    
