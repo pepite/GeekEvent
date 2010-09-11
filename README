@@ -5,11 +5,21 @@
 
 1. Purpose:
 -----------
-GeekEvent is a web application to create, follow and handle events registrations.
-It has been implemented for the Java User Group community. It is also
-a good sample of a real Play! Framework application. 
+	GeekEvent is a web application to create, follow and handle events registrations.
+	It has been implemented for the Java User Group community. It is also
+	a good sample of a real Play! Framework application. 
 
 
-Original author: 
-Nicolas Martignole, nicolas@touilleur-express.fr
+2. License:
+-----------
+    This work is distributed under the Affero GPL license.
+
+3. How to contact the author ?
+------------------------------
+    Nicolas Martignole, Paris, France
+    nicolas@touilleur-express.fr
+
+4. How to report an issue ? a feature request ?
+-----------------------------------------------
+	Please use http://github.com/nicmarti/GeekEvent/issues
 
