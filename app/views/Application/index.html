@@ -14,7 +14,7 @@
   ~ GNU Affero General Public License for more details.
   ~
   ~ You should have received a copy of the GNU Affero General Public License
-  ~ along with GeekEvent.  If not, see <http://www.gnu.org/licenses/>.
+  ~ along with GeekEvent.  If not, see http://www.gnu.org/licenses/.
   ~
   ~ See http://touilleur-express.fr/ for more details.
   -->
@@ -30,17 +30,12 @@
         <section>
             <h3>Accueil</h3>
             #{if flash.success}
-                <div class="successbox">${flash.success}</div>
+            <div class="successbox">${flash.success}</div>
             #{/if}
             #{if flash.error}
-                <div class="errorbox">${flash.error}</div>
+            <div class="errorbox">${flash.error}</div>
             #{/if}
-            #{ifnot session.user}
-                <h3>S'authentifier...</h3>
-            #{/ifnot}
-            #{else}
-                <p>Bonjour ${session.user-f}</p>
-            #{/else}
+            <p>Bonjour ${session.user-f}</p>
 
         </section>
     </div>

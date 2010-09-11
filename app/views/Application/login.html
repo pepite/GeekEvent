@@ -14,7 +14,7 @@
   ~ GNU Affero General Public License for more details.
   ~
   ~ You should have received a copy of the GNU Affero General Public License
-  ~ along with GeekEvent.  If not, see <http://www.gnu.org/licenses/>.
+  ~ along with GeekEvent.  If not, see http://www.gnu.org/licenses/.
   ~
   ~ See http://touilleur-express.fr/ for more details.
   -->
@@ -29,34 +29,45 @@
     <div id="mainContent">
         <section>
             <h3>S'authentifier</h3>
-            
+
             #{if flash.success}
-                <div class="successbox">${flash.success}</div>
+            <div class="successbox">${flash.success}</div>
             #{/if}
             #{if flash.error}
-                <div class="errorbox">${flash.error}</div>
+            <div class="errorbox">${flash.error}</div>
             #{/if}
+            #{ifErrors}
+            <div class="errorbox">
+                <ul>
+                    #{errors}
+                    <li>${error}</li>
+                    #{/errors}
+                </ul>
+            </div>
+            #{/ifErrors}
+
 
             #{ifnot user}
-                #{form @Application.authenticate()}
+            #{form @Application.authenticate()}
 
-                <p>
-                    <label for="email">Votre adresse email</label>
-                    <input name="email" id="email" type="email" required value="demo@test.fr"/>
-                </p>
-                 <p>
-                    <label for="password">Votre mot de passe</label>
-                    <input name="password" id="password" type="password" required value="demo"/>
-                </p>
+            <p>
+                <label for="email">Votre adresse email</label>
+                <input name="email" id="email" type="email" required value="${flash.email}"/>
+            </p>
 
-                <p><input type="submit" value="S'inscrire"/></p>
+            <p>
+                <label for="password">Votre mot de passe</label>
+                <input name="password" id="password" type="password" required value="${flash.password}"/>
+            </p>
 
-                <em>Essayez les comptes de démonstration nicolas@test.fr/demo et demo@test.fr/demo</em>
+            <p><input type="submit" value="S'inscrire"/></p>
 
-                #{/form}
+            <em>Essayez les comptes de démonstration nicolas@test.fr/demo et demo@test.fr/demo</em>
+
+            #{/form}
             #{/ifnot}
             #{else}
-                <h3>Bonjour ${user.firstName}</h3>
+            <h3>Bonjour ${user.firstName}</h3>
             #{/else}
 
         </section>

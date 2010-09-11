@@ -42,6 +42,10 @@ body {
     background: #F0F0F0;
 }
 
+li {
+    margin-left:9px;
+}
+
 #horizontalLogo{
     background-image:url("../images/bandeau01.png");
     z-index:1;

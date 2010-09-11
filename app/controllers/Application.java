@@ -23,6 +23,7 @@ package controllers;
 
 import models.JugEvent;
 import models.JugUser;
+import play.data.validation.Required;
 import play.mvc.*;
 
 import java.util.List;
@@ -35,7 +36,7 @@ import java.util.List;
  */
 public class Application extends Controller {
 
-    @Before(unless = {"login", "logout","authenticate"})
+    @Before(unless = {"login", "logout", "authenticate"})
     static void checkLogin() {
         if (!session.contains("user")) {
             login();
@@ -59,10 +60,25 @@ public class Application extends Controller {
 
 
     public static void login(String email, String password) {
-       render();
+        render();
     }
 
+    /**
+     * Authenticate the user on login and password.
+     *
+     * @param email    received from the view
+     * @param password received from the view
+     */
     public static void authenticate(String email, String password) {
+        validation.required(email);
+        validation.email(email);
+        validation.required(password);
+        if (validation.hasErrors()) {
+            params.flash(); // add http parameters to the flash scope
+            validation.keep(); // keep the errors for the next request
+            login();
+        }
+
         JugUser user = JugUser.connect(email, password);
         if (user != null) {
             session.put("user-f", user.firstName);

@@ -1,0 +1,3 @@
+# Copyright 2010 Nicolas Martignole
+validation.required=%s est obligatoire
+validation.email=Le format de l'email n'est pas correct
