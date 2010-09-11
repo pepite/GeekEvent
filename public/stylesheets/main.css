@@ -42,6 +42,13 @@ body {
     background: #F0F0F0;
 }
 
+#horizontalLogo{
+    background-image:url("../images/bandeau01.png");
+    z-index:1;
+    height:111px;
+    width:890px;
+}
+
 h1, h2 {
     font-size: 28px;
     line-height: 44px;
@@ -333,10 +340,12 @@ footer div section {
 
 footer div #about, footer div #blogroll {
     padding-right: 20px;
+    text-align:center;
 }
 
-footer h3 {
+footer em {
     color: #FFF;
+    font-size:9px;
 }
 
 footer a {
