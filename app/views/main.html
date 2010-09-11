@@ -22,37 +22,39 @@
 <!DOCTYPE html>
 
 <html>
-    <head>
-        <title>#{get 'title' /}</title>
-        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-        <link rel="stylesheet" type="text/css" media="screen" href="@{'/public/stylesheets/main.css'}">
-        #{get 'moreStyles' /}
-        <link rel="shortcut icon" type="image/png" href="@{'/public/images/favicon.png'}">
-        <script src="@{'/public/javascripts/jquery-1.4.2.min.js'}" type="text/javascript" charset="utf-8"></script>
-        #{get 'moreScripts' /}
-    </head>
-    <body>
-            <div id="horizontalLogo">
-                &nbsp;
-            </div>
+<head>
+    <title>#{get 'title' /}</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <link rel="stylesheet" type="text/css" media="screen" href="@{'/public/stylesheets/grid.css'}">
+    <link rel="stylesheet" type="text/css" media="screen" href="@{'/public/stylesheets/main.css'}">
+    #{get 'moreStyles' /}
+    <link rel="shortcut icon" type="image/png" href="@{'/public/images/favicon.png'}">
+    <script src="@{'/public/javascripts/jquery-1.4.2.min.js'}" type="text/javascript" charset="utf-8"></script>
+    #{get 'moreScripts' /}
+</head>
+<body>
+<div class="grid_12" id="horizontalLogo">
+    &nbsp;
+</div>
+<div class="clear">&nbsp;</div>
+<div class="grid_12 nav">
 
-        <nav>
-		<ul>
-			<li class="selected"><a href="/">Mes événements</a></li>
-			<li><a href="#">Créer un événement</a></li>
-			<li><a href="@{'/public/about.html'}">A propos</a></li>
-			<li class="subscribe"><a href="#">RSS</a></li>
-		</ul>
-	</nav>
-       
+        <ul>
+            <li class="selected"><a href="/">Mes événements</a></li>
+            <li><a href="#">Créer un événement</a></li>
+            <li><a href="@{'/public/about.html'}">A propos</a></li>
+            <li class="subscribe"><a href="#">RSS</a></li>
+        </ul>
 
-        <section>
-        #{doLayout /}
-        </section>
+</div>
+<div class="p20">&nbsp;</div>
+<div class="p20">&nbsp;</div>
 
-        <footer>
-            <div id="about">
-            <em>Copyright 2010 - N.Martignole - Tous droits réservés</em></div>
-        </footer>
-    </body>
+    #{doLayout /}
+
+<div class="clear">&nbsp</div>
+<div class="grid_12 footer">
+    <em>Copyright 2010 - N.Martignole - Tous droits réservés</em>
+</div>
+</body>
 </html>

@@ -25,9 +25,8 @@
 #{set pageTitle:'GeekEvent' /}
 
 
-<div id="content">
-    <div id="mainContent">
-        <section>
+<div class="container_12">
+    <div class="grid_12">
             <h3>Accueil</h3>
             #{if flash.success}
             <div class="successbox">${flash.success}</div>
@@ -35,10 +34,78 @@
             #{if flash.error}
             <div class="errorbox">${flash.error}</div>
             #{/if}
-            <p>Bonjour ${session.user-f}</p>
 
-        </section>
+            #{if currentUser}
+                <p>Bonjour ${session.user-f}</p>
+            #{/if}
+            #{else}
+                <p>Bonjour</p>
+            #{/else}
     </div>
+    <div class="clear">&nbsp;</div>
+
+    <div class="grid_4">
+        <h3>Evénements à venir</h3>
+        #{list items:jugEvents, as:'jugit'}
+            #{showEventTitleTag event:jugit/}
+        #{/list}
+    </div>
+    #{if currentUser}
+    <div class="grid_4">
+        <h3>Vos inscriptions</h3>
+        <p>Liste des événements où vous vous êtes inscrit :</p>
+        #{list items:currentUser.attendeesEvent, as:'myEvent'}
+            #{showEventTitleTag event:myEvent/}<br/>
+        #{/list}
+
+    </div>
+    <div class="grid_4">
+        <h3>Vos événements</h3>
+        <p>Liste des événements que vous organisez :</p>
+        #{list items:currentUser.myEvents, as:'myEvent2'}
+            #{showEventTitleTag event:myEvent2/}<br/>
+        #{/list}
+    </div>
+    #{/if}
+    #{else}
+    <div class="grid_8">
+        <h3>Authentifiez-vous</h3>
+        #{if flash.success}
+            <div class="successbox">${flash.success}</div>
+            #{/if}
+            #{if flash.error}
+            <div class="errorbox">${flash.error}</div>
+            #{/if}
+            #{ifErrors}
+            <div class="errorbox">
+                <ul>
+                    #{errors}
+                    <li>${error}</li>
+                    #{/errors}
+                </ul>
+            </div>
+            #{/ifErrors}
+
+            #{form @Application.authenticate()}
+
+            <p>
+                <label for="email">Votre adresse email</label>
+                <input name="email" id="email" type="email" required value="${flash.email}"/>
+            </p>
+
+            <p>
+                <label for="password">Votre mot de passe</label>
+                <input name="password" id="password" type="password" required value="${flash.password}"/>
+            </p>
+
+            <p><input type="submit" value="S'inscrire"/></p>
+
+            <em>Essayez les comptes de démonstration nicolas@test.fr/demo et demo@test.fr/demo</em>
+
+            #{/form}
+    </div>
+    #{/else}
+
 
 
 </div>

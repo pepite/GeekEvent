@@ -28,6 +28,7 @@ import play.db.jpa.Model;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.Set;
 
 /**
  * A Java User Group Event.
@@ -58,5 +59,10 @@ public class JugEvent extends Model {
     @OneToOne
     public JugUser createdBy;
 
+    @ManyToMany(mappedBy = "attendeesEvent")
+    public Set<JugUser> participants;
+
+    @ManyToOne
+    public JugUser eventOrganizer;
 
 }

@@ -65,11 +65,11 @@ public class JugUser extends JPASupport {
     public String password;
 
     // Events I'd like to participate to
-    @OneToMany
+    @ManyToMany()
     public Set<JugEvent> attendeesEvent;
 
     // Events I created
-    @OneToMany
+    @OneToMany(mappedBy = "eventOrganizer")
     public Set<JugEvent> myEvents;
 
     /**

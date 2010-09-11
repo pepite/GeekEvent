@@ -36,7 +36,7 @@ import java.util.List;
  */
 public class Application extends Controller {
 
-    @Before(unless = {"login", "logout", "authenticate"})
+    @Before(unless = {"login", "logout", "authenticate", "index"})
     static void checkLogin() {
         if (!session.contains("user")) {
             login();
@@ -55,7 +55,17 @@ public class Application extends Controller {
 
     public static void index() {
         List<JugEvent> jugEvents = JugEvent.findAll();
-        render(jugEvents);
+        String userId=session.get("user-id");
+
+        if(userId==null){
+            // the user is not yet authenticated
+            render(jugEvents);
+            return;
+        }
+
+        JugUser currentUser=JugUser.findById(userId);
+
+        render(jugEvents,currentUser);
     }
 
 
