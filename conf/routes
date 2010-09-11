@@ -1,3 +1,5 @@
+# Copyright 2010 Nicolas Martignole 
+
 # Routes
 # This file defines all application routes (Higher priority routes first)
 # ~~~~
@@ -10,3 +12,4 @@ GET     /public/                                staticDir:public
 
 # Catch all
 *       /{controller}/{action}                  {controller}.{action}
+http://www.gnu.org/licenses/
