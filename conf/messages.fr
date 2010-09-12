@@ -1,3 +1,8 @@
 # Copyright 2010 Nicolas Martignole
 validation.required=%s est obligatoire
 validation.email=Le format de l'email n'est pas correct
+book.error1=Pas d'utilisateur spécifé lors de l'appel de Book
+book.error2=Utilisateur non trouvé en base, impossible d'enregistrer l'inscription
+book.success=Inscription enregistrée !
+unbook.success=Vous êtes désinscrit de l'événement
+book.waiting=Il n'y a plus de places libres, vous êtes en liste d'attente.

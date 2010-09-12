@@ -1,3 +1,8 @@
 # Copyright 2010 Nicolas Martignole
 validation.required=%s is required
 validation.email=Invalid email
+book.error1=No userId specified
+book.error2=User not found, unable to register
+book.success=You've been registered successfully
+book.waiting=Sorry, no more empty slots available, you're on the waiting list
+unbook.success=Successfully unresistered from event

@@ -47,7 +47,7 @@
     <div class="grid_4">
         <h3>Evénements à venir</h3>
         #{list items:jugEvents, as:'jugit'}
-            #{showEventTitleTag event:jugit/}
+            #{showEventTitleTag event:jugit, user:currentUser /}
         #{/list}
     </div>
     #{if currentUser}
@@ -55,7 +55,7 @@
         <h3>Vos inscriptions</h3>
         <p>Liste des événements où vous vous êtes inscrit :</p>
         #{list items:currentUser.attendeesEvent, as:'myEvent'}
-            #{showEventTitleTag event:myEvent/}<br/>
+            #{showEventTitleROTag event:myEvent/}<br/>
         #{/list}
 
     </div>
@@ -63,7 +63,7 @@
         <h3>Vos événements</h3>
         <p>Liste des événements que vous organisez :</p>
         #{list items:currentUser.myEvents, as:'myEvent2'}
-            #{showEventTitleTag event:myEvent2/}<br/>
+            #{showEventTitleROTag event:myEvent2/}<br/>
         #{/list}
     </div>
     #{/if}

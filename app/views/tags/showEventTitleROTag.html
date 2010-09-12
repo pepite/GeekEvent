@@ -19,13 +19,5 @@
   ~ See http://touilleur-express.fr/ for more details.
   -->
 
-<strong>${_event.title}</strong> le ${_event.date.format('dd/MM/yyyy')} à ${_event.date.format('hh:mm')}
-<br/>
-#{if _user.attendeesEvent.contains(_event)}
-    #{a @Application.bookThisEvent(_event.id)}Inscrivez-moi#{/a}
-#{/if}
-#{else}
-    #{a @Application.unregisterThisEvent(_event.id)}Annuler mon inscription#{/a}
-#{/else}
-
+${_event.title} le ${_event.date.format('dd/MM/yyyy')}
 <br/>

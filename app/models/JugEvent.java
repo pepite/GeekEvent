@@ -14,7 +14,7 @@
  * GNU Affero General Public License for more details.
  *
  * You should have received a copy of the GNU Affero General Public License
- * along with GeekEvent.  If not, see <http://www.gnu.org/licenses/>.
+ * along with GeekEvent.  If not, see http://www.gnu.org/licenses/.
  *
  * See http://touilleur-express.fr/ for more details.
  */
@@ -25,6 +25,7 @@ import play.data.validation.Max;
 import play.data.validation.MaxSize;
 import play.data.validation.Required;
 import play.db.jpa.Model;
+import play.i18n.Messages;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -65,4 +66,53 @@ public class JugEvent extends Model {
     @ManyToOne
     public JugUser eventOrganizer;
 
+    /**
+     * Holds all the logic for booking, this method will try to put the user
+     * on the attendees list, or on the waiting list and will return a status string.
+     *
+     * @param userId is the user to book
+     * @return a simple status, cause I don't want business exception here
+     */
+    public String book(String userId) {
+        if (userId == null) {
+            return Messages.get("book.error1");
+        }
+
+        JugUser user = JugUser.findById(userId);
+        if (user == null) {
+            return Messages.get("book.error2");
+        }
+
+
+        if (participants.size() < totalSlots) {
+            user.attendeesEvent.add(this);
+            participants.add(user);
+            user.save();
+            save();
+
+            return Messages.get("book.success");
+        } else {
+            // here we should put the user on an orderd list to handle "waiting" status
+            return Messages.get("book.waiting");
+        }
+
+    }
+
+    public String unbook(String userId) {
+        if (userId == null) {
+            return Messages.get("book.error1");
+        }
+
+        JugUser user = JugUser.findById(userId);
+        if (user == null) {
+            return Messages.get("book.error2");
+        }
+
+        user.attendeesEvent.remove(this);
+        participants.remove(user);
+        user.save();
+        save();
+
+        return Messages.get("unbook.success");
+    }
 }

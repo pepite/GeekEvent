@@ -1,28 +1,20 @@
-JugEvent(j1):
-    title: Soirée NoSQL
-    abstractContent: Découvrez la soirée NoSQL
-    description: >
-      Un an que NoSQL fait de plus en plus de buzz. Enfin on challenge le modèle relationnel après 40 années de suprématie ! Reste que c'est un monde en pleine innovation qui est encore difficile à aborder. Cette session proposera une introduction à ces technologies en présentant notamment les grandes catégories de solutions, les principaux patterns d'implémentation et trade-offs ainsi qu'un état du marché
-    date: 2010-09-15 19:00:00
-    totalSlots: 210
+JugUser(u1):
+    email: user1@test.fr
+    password: demo
+    firstName: Pierre
+    lastName: Testeur
+    creationDate: 2010-09-11 12:00:22
 
-JugEvent(j2):
-    title: Jug Summer Camp
-    abstractContent: Une journée pour la rentrée.
-    description: Présentation par O.Mallassi et M.Filguiere
-    date: 2010-09-10 09:00:00
-    totalSlots: 210
-
-JugEvent(j3):
-    title: Soirée créé par Nicolas
-    abstractContent: Un exemple de soirée créé par l'utilisateur nicolas@test.fr
-    description: Voici un exemple d'événement créé par l'utilisateur nicolas@test.fr
-    date: 2010-09-10 09:00:00
-    totalSlots: 210
-
+JugUser(u2):
+    email: user2@test.fr
+    password: demo
+    firstName: Christophe
+    lastName: Testeur2
+    creationDate: 2010-09-11 12:00:22
+        
 JugUser(u4):
     email: nicolas@test.fr
-    password: test123
+    password: demo
     firstName: Nicolas
     lastName: Martignole
     creationDate: 2010-09-11 12:00:22
@@ -33,4 +25,31 @@ JugUser(u5):
     firstName: Demo
     lastName: User
     creationDate: 2010-09-12 08:00:22
-    myEvents: j1
+
+JugEvent(j1):
+    title: Soirée NoSQL
+    abstractContent: Découvrez la soirée NoSQL
+    description: >
+      Un an que NoSQL fait de plus en plus de buzz. Enfin on challenge le modèle relationnel après 40 années de suprématie ! Reste que c'est un monde en pleine innovation qui est encore difficile à aborder. Cette session proposera une introduction à ces technologies en présentant notamment les grandes catégories de solutions, les principaux patterns d'implémentation et trade-offs ainsi qu'un état du marché
+    date: 2010-09-15 19:00:00
+    totalSlots: 5
+    eventOrganizer: u4
+    participants: [u4,u5]
+
+JugEvent(j2):
+    title: Jug Summer Camp
+    abstractContent: Une journée pour la rentrée.
+    description: Présentation par O.Mallassi et M.Filguiere
+    date: 2010-09-10 09:00:00
+    totalSlots: 210
+    eventOrganizer: u5
+    participants: [u4,u5]
+
+JugEvent(j3):
+    title: Soirée créé par Nicolas
+    abstractContent: Un exemple de soirée créé par l'utilisateur nicolas@test.fr
+    description: Voici un exemple d'événement créé par l'utilisateur nicolas@test.fr
+    date: 2010-09-10 09:00:00
+    totalSlots: 210
+    eventOrganizer: u5
+    participants:  [u4,u1,u2]

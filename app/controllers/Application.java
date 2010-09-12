@@ -14,7 +14,7 @@
  * GNU Affero General Public License for more details.
  *
  * You should have received a copy of the GNU Affero General Public License
- * along with GeekEvent.  If not, see <http://www.gnu.org/licenses/>.
+ * along with GeekEvent.  If not, see http://www.gnu.org/licenses/.
  *
  * See http://touilleur-express.fr/ for more details.
  */
@@ -101,5 +101,49 @@ public class Application extends Controller {
         flash.error("Email ou mot de passe incorrect. Merci d'essayer à nouveau.");
         login();
     }
+
+    public static void bookThisEvent(Long jugEventId) {
+           JugEvent jugEvent = JugEvent.findById(jugEventId);
+           notFoundIfNull(jugEvent);
+
+           String userId = session.get("user-id");
+
+           if (userId == null) {
+               // the user is not yet authenticated
+               redirect("Application/login");
+               return;
+           }
+
+           // Should add the user to the attendees list
+           // or put the user on waiting list
+           String result=jugEvent.book(userId);
+
+           flash.success(result);
+
+           index();
+
+       }
+
+       public static void unregisterThisEvent(Long jugEventId){
+            JugEvent jugEvent = JugEvent.findById(jugEventId);
+           notFoundIfNull(jugEvent);
+
+           String userId = session.get("user-id");
+
+           if (userId == null) {
+               // the user is not yet authenticated
+               redirect("Application/login");
+               return;
+           }
+
+           // Should add the user to the attendees list
+           // or put the user on waiting list
+           String result=jugEvent.unbook(userId);
+
+           flash.success(result);
+
+           index();
+       }
+    
 
 }
