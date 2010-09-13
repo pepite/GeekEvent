@@ -43,14 +43,14 @@ body {
 }
 
 li {
-    margin-left:9px;
+    margin-left: 9px;
 }
 
-#horizontalLogo{
-    background-image:url("../images/bandeau01.png");
-    z-index:1;
-    height:111px;
-    width:890px;
+#horizontalLogo {
+    background-image: url("../images/bandeau01.png");
+    z-index: 1;
+    height: 111px;
+    width: 890px;
 }
 
 h1, h2 {
@@ -159,11 +159,9 @@ p {
     -webkit-border-radius: 22px;
 }
 
-
 /*------------------------------
 =COMMENT FORM
 ------------------------------*/
-
 
 form p {
     display: table;
@@ -203,9 +201,9 @@ form input[type="submit"] {
 .footer {
     background: #222;
     color: #ccc;
-    font-size:9px;
-    width:100%;
-    text-align:center;
+    font-size: 9px;
+    width: 100%;
+    text-align: center;
 }
 
 /* ------- Boxes -------------- */
@@ -244,6 +242,37 @@ form input[type="submit"] {
     border: 1px solid #d1e7ca;
     margin: 0 0 30px;
     padding: 10px;
+    -moz-border-radius: 4px;
+    -webkit-border-radius: 4px;
+}
+
+.dateLabel {
+    font-size: smaller;
+    background: url('../images/clock.png') no-repeat scroll 0 2px #eee;
+    margin-right: 5px;
+    padding: 3px 3px 3px 20px;
+}
+.eventDetails {
+    font-size: smaller;
+    background: url('../images/details.png') no-repeat scroll 0 2px #eee;
+    margin-right: 5px;
+    padding: 3px 3px 3px 20px;
+}
+.eventAction {
+    font-size: smaller;
+    background: url('../images/author.png') no-repeat scroll 0 2px #eee;
+    margin-right: 5px;
+    padding: 3px 3px 3px 20px;
+}
+
+
+.eventPanel{
+    padding-bottom:5px;
+}
+
+#toasterDiv {
+    background: #fed3a9;
+    border: 1px solid #333;
     -moz-border-radius: 4px;
     -webkit-border-radius: 4px;
 }

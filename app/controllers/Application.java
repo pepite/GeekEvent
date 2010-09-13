@@ -125,8 +125,10 @@ public class Application extends Controller {
        }
 
        public static void unregisterThisEvent(Long jugEventId){
+           System.out.println("Unregister :"+jugEventId);
             JugEvent jugEvent = JugEvent.findById(jugEventId);
            notFoundIfNull(jugEvent);
+           System.out.println("Unregister on event found");
 
            String userId = session.get("user-id");
 
@@ -142,7 +144,7 @@ public class Application extends Controller {
 
            flash.success(result);
 
-           index();
+           render();
        }
     
 

@@ -53,3 +53,12 @@ JugEvent(j3):
     totalSlots: 210
     eventOrganizer: u5
     participants:  [u4,u1,u2]
+
+JugEvent(j3):
+    title: Exemple de soirée complète
+    abstractContent: Un exemple de soirée sans places libres
+    description: Cette soirée de test est complète, il n'y a pas de slots de libres.
+    date: 2010-08-02 18:20:00
+    totalSlots: 0
+    eventOrganizer: u1
+    participants:  [u4,u1,u2]

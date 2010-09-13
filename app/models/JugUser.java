@@ -65,7 +65,7 @@ public class JugUser extends JPASupport {
     public String password;
 
     // Events I'd like to participate to
-    @ManyToMany()
+    @ManyToMany
     public Set<JugEvent> attendeesEvent;
 
     // Events I created
@@ -136,4 +136,34 @@ public class JugUser extends JPASupport {
     }
 
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        if (!super.equals(o)) return false;
+
+        JugUser jugUser = (JugUser) o;
+
+        if (!email.equals(jugUser.email)) return false;
+        if (id != null ? !id.equals(jugUser.id) : jugUser.id != null) return false;
+
+        return true;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = super.hashCode();
+        result = 31 * result + (id != null ? id.hashCode() : 0);
+        result = 31 * result + email.hashCode();
+        return result;
+    }
+
+    @Override
+    public String toString() {
+        return "JugUser{" +
+                "email='" + email + '\'' +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                '}';
+    }
 }

@@ -21,9 +21,11 @@
 
 package models;
 
+import org.hibernate.annotations.GenericGenerator;
 import play.data.validation.Max;
 import play.data.validation.MaxSize;
 import play.data.validation.Required;
+import play.db.jpa.JPASupport;
 import play.db.jpa.Model;
 import play.i18n.Messages;
 
@@ -39,6 +41,9 @@ import java.util.Set;
  */
 @Entity
 public class JugEvent extends Model {
+    @Id
+    @GeneratedValue
+    public Long id;
 
     @Required
     @Max(value = 255)
@@ -98,6 +103,12 @@ public class JugEvent extends Model {
 
     }
 
+    /**
+     * Removes the specified user from this event, this method also updates the collection in user.
+     *
+     * @param userId is the user to remove.
+     * @return a status string.
+     */
     public String unbook(String userId) {
         if (userId == null) {
             return Messages.get("book.error1");
@@ -114,5 +125,47 @@ public class JugEvent extends Model {
         save();
 
         return Messages.get("unbook.success");
+    }
+
+    /**
+     * Returns the number of free slots for this event.
+     * @return the number of free slots.
+     */
+    @Transient
+    public Integer getFreeSlots() {
+        if (participants == null) {
+            return 0;
+        }
+        return totalSlots - participants.size();
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        if (!super.equals(o)) return false;
+
+        JugEvent jugEvent = (JugEvent) o;
+
+        if (id != null ? !id.equals(jugEvent.id) : jugEvent.id != null) return false;
+        if (!title.equals(jugEvent.title)) return false;
+
+        return true;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = super.hashCode();
+        result = 31 * result + (id != null ? id.hashCode() : 0);
+        result = 31 * result + title.hashCode();
+        return result;
+    }
+
+    @Override
+    public String toString() {
+        return "JugEvent{" +
+                "title='" + title + '\'' +
+                ", date=" + date +
+                '}';
     }
 }

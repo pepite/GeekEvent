@@ -1,24 +1,3 @@
-<!--
-  ~ Copyright (c) 2010 Nicolas MARTIGNOLE
-  ~
-  ~ This file is part of GeekEvent.
-  ~
-  ~ GeekEvent is free software: you can redistribute it and/or modify
-  ~ it under the terms of the GNU Affero General Public License as published by
-  ~ the Free Software Foundation, either version 3 of the License, or
-  ~ (at your option) any later version.
-  ~
-  ~ GeekEvent is distributed in the hope that it will be useful,
-  ~ but WITHOUT ANY WARRANTY; without even the implied warranty of
-  ~ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-  ~ GNU Affero General Public License for more details.
-  ~
-  ~ You should have received a copy of the GNU Affero General Public License
-  ~ along with GeekEvent.  If not, see http://www.gnu.org/licenses/.
-  ~
-  ~ See http://touilleur-express.fr/ for more details.
-  -->
-
 #{extends 'main.html' /}
 #{set title:'GeekEvent - Start page' /}
 
@@ -28,13 +7,6 @@
 <div class="container_12">
     <div class="grid_12">
             <h3>Accueil</h3>
-            #{if flash.success}
-            <div class="successbox">${flash.success}</div>
-            #{/if}
-            #{if flash.error}
-            <div class="errorbox">${flash.error}</div>
-            #{/if}
-
             #{if currentUser}
                 <p>Bonjour ${session.user-f}</p>
             #{/if}
@@ -70,21 +42,6 @@
     #{else}
     <div class="grid_8">
         <h3>Authentifiez-vous</h3>
-        #{if flash.success}
-            <div class="successbox">${flash.success}</div>
-            #{/if}
-            #{if flash.error}
-            <div class="errorbox">${flash.error}</div>
-            #{/if}
-            #{ifErrors}
-            <div class="errorbox">
-                <ul>
-                    #{errors}
-                    <li>${error}</li>
-                    #{/errors}
-                </ul>
-            </div>
-            #{/ifErrors}
 
             #{form @Application.authenticate()}
 
@@ -98,7 +55,7 @@
                 <input name="password" id="password" type="password" required value="${flash.password}"/>
             </p>
 
-            <p><input type="submit" value="S'inscrire"/></p>
+            <p><input type="submit" value="S'authentifier"/></p>
 
             <em>Essayez les comptes de démonstration nicolas@test.fr/demo et demo@test.fr/demo</em>
 

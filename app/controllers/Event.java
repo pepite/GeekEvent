@@ -34,7 +34,7 @@ import play.mvc.Controller;
  */
 public class Event extends Controller {
 
-    @Before(unless = {"index"})
+    @Before(unless = {"show"})
     static void checkLogin() {
         if (!session.contains("user")) {
             redirect("Application/login");
@@ -42,7 +42,8 @@ public class Event extends Controller {
     }
 
 
-    public static void index() {
-        render();
+    public static void show(Long jugEventId, String title,String date) {
+        JugEvent jugEvent=JugEvent.findById(jugEventId);
+        render(jugEvent);
     }
 }

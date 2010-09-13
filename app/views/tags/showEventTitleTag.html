@@ -1,31 +1,46 @@
-<!--
-  ~ Copyright (c) 2010 Nicolas MARTIGNOLE
-  ~
-  ~ This file is part of GeekEvent.
-  ~
-  ~ GeekEvent is free software: you can redistribute it and/or modify
-  ~ it under the terms of the GNU Affero General Public License as published by
-  ~ the Free Software Foundation, either version 3 of the License, or
-  ~ (at your option) any later version.
-  ~
-  ~ GeekEvent is distributed in the hope that it will be useful,
-  ~ but WITHOUT ANY WARRANTY; without even the implied warranty of
-  ~ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-  ~ GNU Affero General Public License for more details.
-  ~
-  ~ You should have received a copy of the GNU Affero General Public License
-  ~ along with GeekEvent.  If not, see http://www.gnu.org/licenses/.
-  ~
-  ~ See http://touilleur-express.fr/ for more details.
-  -->
+<div class="eventPanel">
+    <style>
+        a {
+            color: red;
+            margin: 5px;
+            cursor: pointer;
+        }
 
-<strong>${_event.title}</strong> le ${_event.date.format('dd/MM/yyyy')} à ${_event.date.format('hh:mm')}
-<br/>
-#{if _user.attendeesEvent.contains(_event)}
-    #{a @Application.bookThisEvent(_event.id)}Inscrivez-moi#{/a}
-#{/if}
-#{else}
-    #{a @Application.unregisterThisEvent(_event.id)}Annuler mon inscription#{/a}
-#{/else}
+        a.hilite {
+            background: yellow;
+        }
+    </style>
 
-<br/>
+    <strong>${_event.title}</strong>
+    <span class="dateLabel">${_event.date.format('dd/MM/yyyy')} à ${_event.date.format('hh:mm')} </span>
+    <br/>
+    <span class="eventDetails">#{a @Event.show(_event.id,_event.title.urlEncode(),_event.date.format('yyyy-MM-dd').urlEncode())}Détails#{/a}</span>
+
+    #{if _user}
+    <span class="eventAction">
+        #{if _user.attendeesEvent.contains(_event)}
+    
+            <a href="#" id="unregister_${_event.id}">Annuler mon inscription</a>
+        #{/if}
+        #{else}
+           <a href="#" class="unregisterLink${_event.id}">Annuler mon inscription</a>
+        #{/else}
+    </span>
+    #{/if}
+
+    <div class="result${_event.id}"></div>
+
+    <script type="text/javascript">
+        $(".unregisterLink${_event.id}").click(function () {
+            $.get('application/unregisterthisevent', { jugEventId: "${_event.id}"}, function(data) {
+                $('.result${_event.id}').html(data);
+            });
+        });
+        $(".unregisterLink${_event.id}").hover(function () {
+            $(this).addClass("hilite");
+        }, function () {
+            $(this).removeClass("hilite");
+        });
+    </script>
+
+</div>

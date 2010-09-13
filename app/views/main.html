@@ -27,10 +27,13 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <link rel="stylesheet" type="text/css" media="screen" href="@{'/public/stylesheets/grid.css'}">
     <link rel="stylesheet" type="text/css" media="screen" href="@{'/public/stylesheets/main.css'}">
+    <link rel="stylesheet" type="text/css" media="screen" href="@{'/public/stylesheets/ui.toaster.css'}">
     #{get 'moreStyles' /}
     <link rel="shortcut icon" type="image/png" href="@{'/public/images/favicon.png'}">
     <script src="@{'/public/javascripts/jquery-1.4.2.min.js'}" type="text/javascript" charset="utf-8"></script>
+    <script src="@{'/public/javascripts/jquery.utils.min.js'}" type="text/javascript" charset="utf-8"></script>
     #{get 'moreScripts' /}
+
 </head>
 <body>
 <div class="grid_12" id="horizontalLogo">
@@ -49,12 +52,14 @@
 </div>
 <div class="p20">&nbsp;</div>
 <div class="p20">&nbsp;</div>
-
+   
     #{doLayout /}
 
 <div class="clear">&nbsp</div>
 <div class="grid_12 footer">
     <em>Copyright 2010 - N.Martignole - Tous droits réservés</em>
 </div>
+<div class="clear">&nbsp</div>
+
 </body>
 </html>
