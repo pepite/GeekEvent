@@ -19,11 +19,10 @@
     #{if _user}
     <span class="eventAction">
         #{if _user.attendeesEvent.contains(_event)}
-    
-            <a href="#" id="unregister_${_event.id}">Annuler mon inscription</a>
+            <a href="#" class="unregisterLink${_event.id}">Annuler mon inscription</a>
         #{/if}
         #{else}
-           <a href="#" class="unregisterLink${_event.id}">Annuler mon inscription</a>
+           <a href="#" class="registerLink${_event.id}">S'inscrire</a>
         #{/else}
     </span>
     #{/if}
@@ -42,5 +41,16 @@
             $(this).removeClass("hilite");
         });
     </script>
-
+    <script type="text/javascript">
+        $(".registerLink${_event.id}").click(function () {
+            $.get('application/registerthisevent', { jugEventId: "${_event.id}"}, function(data) {
+                $('.result${_event.id}').html(data);
+            });
+        });
+        $(".registerLink${_event.id}").hover(function () {
+            $(this).addClass("hilite");
+        }, function () {
+            $(this).removeClass("hilite");
+        });
+    </script>
 </div>

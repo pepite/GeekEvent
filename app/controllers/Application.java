@@ -55,17 +55,17 @@ public class Application extends Controller {
 
     public static void index() {
         List<JugEvent> jugEvents = JugEvent.findAll();
-        String userId=session.get("user-id");
+        String userId = session.get("user-id");
 
-        if(userId==null){
+        if (userId == null) {
             // the user is not yet authenticated
             render(jugEvents);
             return;
         }
 
-        JugUser currentUser=JugUser.findById(userId);
+        JugUser currentUser = JugUser.findById(userId);
 
-        render(jugEvents,currentUser);
+        render(jugEvents, currentUser);
     }
 
 
@@ -102,50 +102,56 @@ public class Application extends Controller {
         login();
     }
 
-    public static void bookThisEvent(Long jugEventId) {
-           JugEvent jugEvent = JugEvent.findById(jugEventId);
-           notFoundIfNull(jugEvent);
+    public static void registerThisEvent(Long jugEventId) {
+        JugEvent jugEvent = JugEvent.findById(jugEventId);
+        if (jugEvent == null) {
+            render("Event not found");
+            return;
+        }
+        String userId = session.get("user-id");
 
-           String userId = session.get("user-id");
+        if (userId == null) {
+            // the user is not yet authenticated
+            render("user not found");
+            return;
+        }
 
-           if (userId == null) {
-               // the user is not yet authenticated
-               redirect("Application/login");
-               return;
-           }
+        // Should add the user to the attendees list
+        // or put the user on waiting list
+        String result = jugEvent.book(userId);
 
-           // Should add the user to the attendees list
-           // or put the user on waiting list
-           String result=jugEvent.book(userId);
+        flash.success(result);
 
-           flash.success(result);
+        render(result);
 
-           index();
+    }
 
-       }
+    public static void unregisterThisEvent(Long jugEventId) {
+        System.out.println("Unregister :" + jugEventId);
+        JugEvent jugEvent = JugEvent.findById(jugEventId);
+        if (jugEvent == null) {
+            render("Event not found");
+            return;
+        }
 
-       public static void unregisterThisEvent(Long jugEventId){
-           System.out.println("Unregister :"+jugEventId);
-            JugEvent jugEvent = JugEvent.findById(jugEventId);
-           notFoundIfNull(jugEvent);
-           System.out.println("Unregister on event found");
+        System.out.println("Unregister on event found");
 
-           String userId = session.get("user-id");
+        String userId = session.get("user-id");
 
-           if (userId == null) {
-               // the user is not yet authenticated
-               redirect("Application/login");
-               return;
-           }
+        if (userId == null) {
+            // the user is not yet authenticated
+            render("user not found");
+            return;
+        }
 
-           // Should add the user to the attendees list
-           // or put the user on waiting list
-           String result=jugEvent.unbook(userId);
+        // Should add the user to the attendees list
+        // or put the user on waiting list
+        String result = jugEvent.unbook(userId);
 
-           flash.success(result);
+        flash.success(result);
 
-           render();
-       }
-    
+        render(result);
+    }
+
 
 }
