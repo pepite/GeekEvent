@@ -1,6 +1,7 @@
 <div class="eventPanel">
 
-    <strong>${_event.title}</strong>
+    <span class="eventTitle">${_event.title}</span>
+    <br/>
     <span class="dateLabel">${_event.date.format('dd/MM/yyyy')} à ${_event.date.format('hh:mm')} </span>
     <br/>
     <span class="eventDetails">#{a @Event.show(_event.id,_event.title.urlEncode(),_event.date.format('yyyy-MM-dd').urlEncode())}Détails#{/a}</span>
@@ -8,35 +9,12 @@
 
     #{if _user}
 
-    <div id="userDetail_${_event.id}">
             #{if _user.attendeesEvent.contains(_event)}
-                <a href="#" id="unregister${_event.id}">Annuler mon inscription</a>
+                #{a @unregisterThisEvent(_event.id)}Annuler mon inscription#{/a}
             #{/if}
             #{else}
-               <a href="#" id="register${_event.id}">S'inscrire</a>
+               #{a @registerThisEvent(_event.id)}S'inscrire#{/a}
             #{/else}
-
-    </div>
-
-
-    <script type="text/javascript">
-        var showRegisterAction =
-        #{jsAction @registerThisEvent(':jugEventId') /}
-        var showUnregisterAction = #{jsAction @unregisterThisEvent(':jugEventId') /}
-        
-        var showRegisterAction = #{jsAction @registerThisEvent(':jugEventId') /}
-
-        $("#unregister${_event.id}").click(function() {
-            $('#userDetail_${_event.id}').load(showUnregisterAction({jugEventId: '${_event.id}'}))
-        });
-        $("#register${_event.id}").click(function() {
-            $('#userDetail_${_event.id}').load(showRegisterAction({jugEventId: '${_event.id}'}))
-        });
-
-    </script>
-
-
     #{/if}
-
 
 </div>

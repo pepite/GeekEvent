@@ -122,7 +122,7 @@ public class Application extends Controller {
 
         flash.success(result);
 
-        render(result,jugEvent);
+        index();
 
     }
 
@@ -150,7 +150,7 @@ public class Application extends Controller {
 
         flash.success(result);
 
-        render(result);
+         index();
     }
 
 
