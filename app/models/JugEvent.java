@@ -88,7 +88,6 @@ public class JugEvent extends Model {
             return Messages.get("book.error2");
         }
 
-
         if (participants.size() < totalSlots) {
             user.attendeesEvent.add(this);
             participants.add(user);

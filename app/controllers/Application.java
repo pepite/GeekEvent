@@ -122,7 +122,7 @@ public class Application extends Controller {
 
         flash.success(result);
 
-        render(result);
+        render(result,jugEvent);
 
     }
 

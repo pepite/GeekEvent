@@ -9,7 +9,6 @@
     #{if _user}
 
     <div id="userDetail_${_event.id}">
-        <span class="eventAction" id="panel_${_event.id}">
             #{if _user.attendeesEvent.contains(_event)}
                 <a href="#" id="unregister${_event.id}">Annuler mon inscription</a>
             #{/if}
@@ -17,7 +16,6 @@
                <a href="#" id="register${_event.id}">S'inscrire</a>
             #{/else}
 
-        </span>
     </div>
 
 
