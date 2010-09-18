@@ -1,5 +1,5 @@
 <div class="eventPanel">
-    <style>
+    <style type="text/css">
         a {
             color: red;
             margin: 5px;
@@ -17,7 +17,7 @@
     <span class="eventDetails">#{a @Event.show(_event.id,_event.title.urlEncode(),_event.date.format('yyyy-MM-dd').urlEncode())}Détails#{/a}</span>
 
     #{if _user}
-    <span class="eventAction">
+    <span class="eventAction" id="panel_${_event.id}">
         #{if _user.attendeesEvent.contains(_event)}
             <a href="#" class="unregisterLink${_event.id}">Annuler mon inscription</a>
         #{/if}
@@ -33,6 +33,7 @@
         $(".unregisterLink${_event.id}").click(function () {
             $.get('application/unregisterthisevent', { jugEventId: "${_event.id}"}, function(data) {
                 $('.result${_event.id}').html(data);
+                $('#panel_${_event.id}').html("<a href='#' class='registerLink${_event.id}'>S\'inscrire</a>");
             });
         });
         $(".unregisterLink${_event.id}").hover(function () {
@@ -45,6 +46,7 @@
         $(".registerLink${_event.id}").click(function () {
             $.get('application/registerthisevent', { jugEventId: "${_event.id}"}, function(data) {
                 $('.result${_event.id}').html(data);
+                $('#panel_${_event.id}').html("<a href='#' class='unregisterLink${_event.id}'>Annuler mon inscription</a>");
             });
         });
         $(".registerLink${_event.id}").hover(function () {
