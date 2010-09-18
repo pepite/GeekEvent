@@ -1,58 +1,44 @@
 <div class="eventPanel">
-    <style type="text/css">
-        a {
-            color: red;
-            margin: 5px;
-            cursor: pointer;
-        }
-
-        a.hilite {
-            background: yellow;
-        }
-    </style>
 
     <strong>${_event.title}</strong>
     <span class="dateLabel">${_event.date.format('dd/MM/yyyy')} à ${_event.date.format('hh:mm')} </span>
     <br/>
     <span class="eventDetails">#{a @Event.show(_event.id,_event.title.urlEncode(),_event.date.format('yyyy-MM-dd').urlEncode())}Détails#{/a}</span>
 
+
     #{if _user}
-    <span class="eventAction" id="panel_${_event.id}">
-        #{if _user.attendeesEvent.contains(_event)}
-            <a href="#" class="unregisterLink${_event.id}">Annuler mon inscription</a>
-        #{/if}
-        #{else}
-           <a href="#" class="registerLink${_event.id}">S'inscrire</a>
-        #{/else}
-    </span>
+
+    <div id="userDetail_${_event.id}">
+        <span class="eventAction" id="panel_${_event.id}">
+            #{if _user.attendeesEvent.contains(_event)}
+                <a href="#" id="unregister${_event.id}">Annuler mon inscription</a>
+            #{/if}
+            #{else}
+               <a href="#" id="register${_event.id}">S'inscrire</a>
+            #{/else}
+
+        </span>
+    </div>
+
+
+    <script type="text/javascript">
+        var showRegisterAction =
+        #{jsAction @registerThisEvent(':jugEventId') /}
+        var showUnregisterAction = #{jsAction @unregisterThisEvent(':jugEventId') /}
+        
+        var showRegisterAction = #{jsAction @registerThisEvent(':jugEventId') /}
+
+        $("#unregister${_event.id}").click(function() {
+            $('#userDetail_${_event.id}').load(showUnregisterAction({jugEventId: '${_event.id}'}))
+        });
+        $("#register${_event.id}").click(function() {
+            $('#userDetail_${_event.id}').load(showRegisterAction({jugEventId: '${_event.id}'}))
+        });
+
+    </script>
+
+
     #{/if}
 
-    <div class="result${_event.id}"></div>
 
-    <script type="text/javascript">
-        $(".unregisterLink${_event.id}").click(function () {
-            $.get('application/unregisterthisevent', { jugEventId: "${_event.id}"}, function(data) {
-                $('.result${_event.id}').html(data);
-                $('#panel_${_event.id}').html("<a href='#' class='registerLink${_event.id}'>S\'inscrire</a>");
-            });
-        });
-        $(".unregisterLink${_event.id}").hover(function () {
-            $(this).addClass("hilite");
-        }, function () {
-            $(this).removeClass("hilite");
-        });
-    </script>
-    <script type="text/javascript">
-        $(".registerLink${_event.id}").click(function () {
-            $.get('application/registerthisevent', { jugEventId: "${_event.id}"}, function(data) {
-                $('.result${_event.id}').html(data);
-                $('#panel_${_event.id}').html("<a href='#' class='unregisterLink${_event.id}'>Annuler mon inscription</a>");
-            });
-        });
-        $(".registerLink${_event.id}").hover(function () {
-            $(this).addClass("hilite");
-        }, function () {
-            $(this).removeClass("hilite");
-        });
-    </script>
 </div>
