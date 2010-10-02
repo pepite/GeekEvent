@@ -44,7 +44,7 @@
             <li class="selected"><a href="/">Mes événements</a></li>
             <li>#{a @Application.newJugEvent()}Créer un événement#{/a}</li>
             <li><a href="@{'/public/about.html'}">A propos</a></li>
-            <li class="subscribe"><a href="#">RSS</a></li>
+            <li class="subscribe">#{a @JugFeed.rss()}RSS#{/a}</li>
         </ul>
 
 </div>
