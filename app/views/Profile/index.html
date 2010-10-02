@@ -1,10 +1,24 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
-        "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<head>
-    <title></title>
-</head>
-<body>
+#{extends 'main.html' /}
+#{set title:'GeekEvent - Start page' /}
 
-</body>
-</html>
+#{set pageTitle:'Profile' /}
+
+
+<div class="container_12">
+    <div class="grid_12">
+        <h3>Profile</h3>
+        <p>Entrer votre adresse email:</p>
+
+        #{form @Profile.gravatar()}
+            <input type="text" name="email" value="${jugUser.email}"/><br/>
+            <input type="submit" value="Valider"/>
+        #{/form}
+
+
+        
+
+    </div>
+
+    <div class="clear">&nbsp;</div>
+    <div class="p20"></div>
+</div>

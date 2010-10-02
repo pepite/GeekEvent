@@ -42,8 +42,15 @@ public class Event extends Controller {
     }
 
 
-    public static void show(Long jugEventId, String title,String date) {
-        JugEvent jugEvent=JugEvent.findById(jugEventId);
+    /**
+     * Shows a specific JugEvent
+     *
+     * @param jugEventId is the jugEvent to show
+     * @param title      this param is not used, but required to create a nice URL, see also 'routes'
+     * @param date       this param is not used, but required to create a nice URL, see also 'routes'
+     */
+    public static void show(final Long jugEventId, final String title, final String date) {
+        JugEvent jugEvent = JugEvent.findById(jugEventId);
         render(jugEvent);
     }
 }

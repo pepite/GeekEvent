@@ -1,12 +1,18 @@
 #{extends 'main.html' /}
 #{set title:'GeekEvent - New Event' /}
 
-#{set pageTitle:'GeekEvent' /}
-
+#{set moreStyles:'
+    <link rel="stylesheet" type="text/css" media="screen" href="/public/stylesheets/ui-lightness/jquery-ui-1.8.4.custom.css">        
+' /}
+#{set moreScripts:'
+<script src="/public/javascripts/jquery-1.4.2.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="/public/javascripts/jquery-ui-1.8.4.custom.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="/public/javascripts/jquery-ui-timepicker-addon-0.5-custom.min.js" type="text/javascript" charset="utf-8"></script>
+' /}
 
 <div class="container_12">
     <div class="grid_12">
-        <h3>Nouvel événement</h3>
+        <h3>Nouvel événement 2</h3>
 
         #{form @saveJugEvent()}
 

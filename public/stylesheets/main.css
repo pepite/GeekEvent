@@ -159,26 +159,13 @@ p {
     -webkit-border-radius: 22px;
 }
 
-/*------------------------------
-=COMMENT FORM
-------------------------------*/
-
 form p {
     display: table;
     margin-bottom: 16px;
     padding: 0 16px;
 }
 
-form label {
-    display: table-cell;
-    width: 140px;
-    padding-right: 20px;
-    text-align: right;
-    font-weight: bold;
-    vertical-align: top;
-}
-
-form input[type="text"], form input[type="email"], form input[type="url"] {
+.inputBox {
     display: table-cell;
     width: 300px;
     height: 20px;
@@ -192,7 +179,7 @@ form textarea {
 }
 
 form input[type="submit"] {
-    margin-left: 162px;
+    margin-left: 30px;
 }
 
 /*------------------------------
@@ -297,4 +284,9 @@ form input[type="submit"] {
 
 .p20 {
     padding-bottom:20px;
+}
+
+#accueil{
+    background-image: url('../images/accueil.png');
+    background-repeat:no-repeat;
 }

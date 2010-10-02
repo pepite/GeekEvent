@@ -5,74 +5,76 @@
 
 
 <div class="container_12">
-    <div class="grid_12">
-        <h3>Accueil</h3>
+    <div class="grid_5">
+        <img src="/public/images/accueil.png" alt="Accueil"/><br/>
         #{if currentUser}
-            <p>Bonjour ${session.user-f}</p>
+        <p>Bonjour ${session.user-f}</p>
         #{/if}
         #{else}
-            <p>Bonjour</p>
+        <p>Bonjour</p>
         #{/else}
         #{if flash.success}
-             <div class="greenbox">${flash.success}</div>
-             #{/if}
+        <div class="greenbox">${flash.success}</div>
+        #{/if}
 
         #{if flash.error}
         <div class="errorbox">${flash.error}</div>
         #{/if}
+        #{if currentUser}
+        <img src="/public/images/vosinscriptions.png" alt="Vos inscriptions"/><br/>
+
+
+        #{list items:currentUser.attendeesEvent, as:'myEvent'}
+        #{showEventTitleROTag event:myEvent/}<br/>
+        #{/list}
+
+        <img src="/public/images/vosevenements.png" alt="Vos événements"/> <br/>
+
+
+        #{list items:currentUser.myEvents, as:'myEvent2'}
+        #{showYourEvent event:myEvent2/}<br/>
+        #{/list}
+        #{/if}
+
+
+    #{ifnot currentUser}
+
+        <h3>Authentifiez-vous</h3>
+        <p>Pour vous inscrire à un événement ou pour proposer un nouvel événement, merci de vous authentifier :</p>
+        #{form @Application.authenticate()}
+
+        <p>
+            <label for="email2">Votre adresse email</label><br/>
+            <input name="email" id="email2" type="email" required value="${flash.email}"/>
+        </p>
+
+        <p>
+            <label for="password">Votre mot de passe</label> <br/>
+            <input name="password" id="password" type="password" required value="${flash.password}"/>
+        </p>
+
+        <p><input type="submit" value="S'authentifier"/></p>
+
+        <em>Essayez les comptes de démonstration nicolas@demo.fr/demo et antonio@demo.fr/demo</em>
+
+        #{/form}
+    #{/ifnot}
+
     </div>
-    <div class="clear">&nbsp;</div>
+
 
     <div class="grid_5">
-        <h3>Evénements à venir</h3>
+        <img src="/public/images/prochainevenements.png" alt="Prochains Evenements"/>
+
+        <br/>
         #{list items:jugEvents, as:'jugit'}
         #{showEventTitleTag event:jugit, user:currentUser /}
         #{/list}
 
 
     </div>
-    #{if currentUser}
-    <div class="grid_4">
-        <h3>Vos inscriptions</h3>
 
-        <p>Liste des événements où vous vous êtes inscrit :</p>
-        #{list items:currentUser.attendeesEvent, as:'myEvent'}
-        #{showEventTitleROTag event:myEvent/}<br/>
-        #{/list}
-
-    </div>
-    <div class="grid_3">
-        <h3>Vos événements</h3>
-
-        <p>Liste des événements que vous organisez :</p>
-        #{list items:currentUser.myEvents, as:'myEvent2'}
-        #{showYourEvent event:myEvent2/}<br/>
-        #{/list}
-    </div>
-    #{/if}
-    #{else}
-    <div class="grid_7">
-        <h3>Authentifiez-vous</h3>
-        <p>Pour vous inscrire à un événement ou pour proposer un nouvel événement, merci de vous inscrire :</p>
-        #{form @Application.authenticate()}
-
-        <p>
-            <label for="email">Votre adresse email</label>
-            <input name="email" id="email" type="email" required value="${flash.email}"/>
-        </p>
-
-        <p>
-            <label for="password">Votre mot de passe</label>
-            <input name="password" id="password" type="password" required value="${flash.password}"/>
-        </p>
-
-        <p><input type="submit" value="S'authentifier"/></p>
-
-        <em>Essayez les comptes de démonstration nicolas@test.fr/demo et demo@test.fr/demo</em>
-
-        #{/form}
-    </div>
-    #{/else}
-
+    <div class="clear"></div>
+    <div class="p20"></div>
 
 </div>

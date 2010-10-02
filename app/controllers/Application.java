@@ -43,16 +43,25 @@ public class Application extends Controller {
         }
     }
 
+    /**
+     * Performs the authentication.
+     */
     public static void login() {
         render();
     }
 
+    /**
+     * Clears the session, delete the encrypted cookie.
+     */
     public static void logout() {
         session.clear();
         login();
     }
 
 
+    /**
+     * Main page
+     */
     public static void index() {
         List<JugEvent> jugEvents = JugEvent.findAll();
         String userId = session.get("user-id");
@@ -68,10 +77,6 @@ public class Application extends Controller {
         render(jugEvents, currentUser);
     }
 
-
-    public static void login(String email, String password) {
-        render();
-    }
 
     /**
      * Authenticate the user on login and password.
@@ -102,6 +107,11 @@ public class Application extends Controller {
         login();
     }
 
+    /**
+     * Register the current authenticated user for this event.
+     *
+     * @param jugEventId is the primaray key
+     */
     public static void registerThisEvent(Long jugEventId) {
         JugEvent jugEvent = JugEvent.findById(jugEventId);
         if (jugEvent == null) {
@@ -126,6 +136,11 @@ public class Application extends Controller {
 
     }
 
+    /**
+     * Cancel a registration for a specific event.
+     *
+     * @param jugEventId is the PK.
+     */
     public static void unregisterThisEvent(Long jugEventId) {
         System.out.println("Unregister :" + jugEventId);
         JugEvent jugEvent = JugEvent.findById(jugEventId);
@@ -167,7 +182,7 @@ public class Application extends Controller {
      */
     public static void editJugEvent(Long id) {
         JugEvent jugEvent = JugEvent.findById(id);
-        if(jugEvent==null){
+        if (jugEvent == null) {
             flash.error("Aucun événement ne correspond à cet id");
             index();
         }
@@ -209,12 +224,6 @@ public class Application extends Controller {
         index();
     }
 
-    private static JugUser currentUser() {
-        String userId = session.get("user-id");
-        JugUser currentUser = JugUser.findById(userId);
-        notFoundIfNull(currentUser);
-        return currentUser;
-    }
 
     /**
      * Updates an existing event.
@@ -250,6 +259,18 @@ public class Application extends Controller {
 
         index();
 
+    }
+
+    /**
+     * Retrieves the current JugUser using the session.
+     *
+     * @return the current authenticated jugUser.
+     */
+    public static JugUser currentUser() {
+        String userId = session.get("user-id");
+        JugUser currentUser = JugUser.findById(userId);
+        notFoundIfNull(currentUser);
+        return currentUser;
     }
 
 }

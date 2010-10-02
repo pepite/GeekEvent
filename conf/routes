@@ -2,9 +2,10 @@
 
 # Create a nice url for showing events
 GET /event/{title}/{date}/{jugEventId} Event.show
-
 GET /event/edit/{id}    Application.editJugEvent
-
+GET /logout Application.logout
+GET /login Application.login
+GET /profile Profile.index
 
 # Home page
 GET     /                                       Application.index

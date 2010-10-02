@@ -21,6 +21,7 @@
 
 package models;
 
+import org.apache.commons.codec.digest.DigestUtils;
 import org.apache.commons.lang.RandomStringUtils;
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.validator.NotNull;
@@ -72,6 +73,9 @@ public class JugUser extends JPASupport {
     @OneToMany(mappedBy = "eventOrganizer")
     public Set<JugEvent> myEvents;
 
+    // MD5hex of the email to load the gravatar image
+    public String gravatarId;
+
     /**
      * Creates a new user. I prefer to generate a random password instead of asking the user to provide
      * its password. Thus I can store it as plain text.
@@ -87,6 +91,9 @@ public class JugUser extends JPASupport {
         this.password = RandomStringUtils.randomAlphanumeric(8);
         this.creationDate = new Date();
         this.emailConfirmed = false;
+        if(email!=null){
+            this.gravatarId= DigestUtils.md5Hex(email.trim().toLowerCase());
+        }
     }
 
     /**
