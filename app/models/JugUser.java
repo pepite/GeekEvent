@@ -160,10 +160,6 @@ public class JugUser extends JPASupport {
 
     @Override
     public String toString() {
-        return "JugUser{" +
-                "email='" + email + '\'' +
-                ", firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
-                '}';
+        return  firstName + " " + lastName ;
     }
 }

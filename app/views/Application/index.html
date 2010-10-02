@@ -13,6 +13,13 @@
         #{else}
             <p>Bonjour</p>
         #{/else}
+        #{if flash.success}
+             <div class="greenbox">${flash.success}</div>
+             #{/if}
+
+        #{if flash.error}
+        <div class="errorbox">${flash.error}</div>
+        #{/if}
     </div>
     <div class="clear">&nbsp;</div>
 
@@ -22,9 +29,6 @@
         #{showEventTitleTag event:jugit, user:currentUser /}
         #{/list}
 
-        #{if flash.success}
-        <div class="greenbox">${flash.success}</div>
-        #{/if}
 
     </div>
     #{if currentUser}
@@ -42,14 +46,14 @@
 
         <p>Liste des événements que vous organisez :</p>
         #{list items:currentUser.myEvents, as:'myEvent2'}
-        #{showEventTitleROTag event:myEvent2/}<br/>
+        #{showYourEvent event:myEvent2/}<br/>
         #{/list}
     </div>
     #{/if}
     #{else}
-    <div class="grid_8">
+    <div class="grid_7">
         <h3>Authentifiez-vous</h3>
-
+        <p>Pour vous inscrire à un événement ou pour proposer un nouvel événement, merci de vous inscrire :</p>
         #{form @Application.authenticate()}
 
         <p>

@@ -3,6 +3,8 @@
 # Create a nice url for showing events
 GET /event/{title}/{date}/{jugEventId} Event.show
 
+GET /event/edit/{id}    Application.editJugEvent
+
 
 # Home page
 GET     /                                       Application.index

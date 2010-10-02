@@ -1,10 +1,20 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
-        "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<head>
-    <title></title>
-</head>
-<body>
+#{field (_prefix ? _prefix + '.' : 'object.') + _name}
+        <input id="${field.id}" class="${field.errorClass}" type="text" name="${field.name}" value="${_value?.format('yyyy-MM-dd')}" size="10" />
+        #{ifError field.name}
+                <span class="error">${field.error}</span>
+        #{/ifError}
 
-</body>
-</html>
+        <script type="text/javascript">
+                $(function(){
+
+                        // Datepicker
+                        $('#${field.id}').datepicker({
+                                inline: true,
+                                dateFormat: 'yy-mm-dd',
+                                gotoCurrent: true
+                        });
+
+                });
+        </script>
+#{/field}
+

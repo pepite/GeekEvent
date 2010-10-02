@@ -1,6 +1,6 @@
 <!--
   ~ Copyright (c) 2010 Nicolas MARTIGNOLE
-  ~  
+  ~
   ~ This file is part of GeekEvent.
   ~
   ~ GeekEvent is free software: you can redistribute it and/or modify
@@ -22,74 +22,59 @@
 <!DOCTYPE html>
 
 <html>
-    <head>
-        <title>GeekEvent - Start page</title>
-        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-        <link rel="stylesheet" type="text/css" media="screen" href="/public/stylesheets/main.css">
-                <link rel="shortcut icon" type="image/png" href="/public/images/favicon.png">
-        <script src="/public/javascripts/jquery-1.4.2.min.js" type="text/javascript" charset="utf-8"></script>
-
-            </head>
-    <body>
-        <header>
-            <h1>GeekEvent</h1>
-        </header>
-
-        <nav>
-		<ul>
-			<li class="selected"><a href="/">Mes événements</a></li>
-
-			<li><a href="/">Créer un événement</a></li>
-			<li><a href="/public/about.html">A propos</a></li>
-			<li class="subscribe"><a href="/">RSS</a></li>
-		</ul>
-	</nav>
+<head>
+    <title>GeekEvent - Start page</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <link rel="stylesheet" type="text/css" media="screen" href="/public/stylesheets/grid.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="/public/stylesheets/main.css">
+    <link rel="stylesheet" type="text/css" media="screen"
+          href="/public/stylesheets/ui-lightness/jquery-ui-1.8.4.custom.css">
+    <link rel="shortcut icon" type="image/png" href="/public/images/favicon.png">
+    <script type="text/javascript" language="javascript" src="/public/javascripts/jquery-1.4.2.min.js"></script>
+    <script type="text/javascript" language="javascript" id="ui" charset="utf-8"
+            src="/public/javascripts/jquery-ui-1.8.4.custom.min.js"></script>
+    <script type="text/javascript" language="javascript" id="datepicker" charset="utf-8"
+            src="/public/javascripts/jquery-ui-timepicker-addon-0.5-custom.min.js"></script>
 
 
-        <section>
-        <!--
-  ~ Copyright (c) 2010 Nicolas MARTIGNOLE
-  ~
-  ~       This file is part of GeekEvent.
-  ~
-  ~       GeekEvent is free software: you can redistribute it and/or modify
-  ~       it under the terms of the GNU Affero General Public License as published by
-  ~       the Free Software Foundation, either version 3 of the License, or
-  ~       (at your option) any later version.
-  ~
-  ~       GeekEvent is distributed in the hope that it will be useful,
-  ~       but WITHOUT ANY WARRANTY; without even the implied warranty of
-  ~       MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-  ~       GNU Affero General Public License for more details.
-  ~
-  ~       You should have received a copy of the GNU Affero General Public License
-  ~       along with Foobar.  If not, see <http://www.gnu.org/licenses/>.
-  ~
-  ~       See http://touilleur-express.fr/ for more details.
-  -->
+</head>
+<body>
+<div class="grid_12" id="horizontalLogo">
+    &nbsp;
+</div>
+<div class="clear">&nbsp;</div>
+<div class="grid_12 nav">
 
+    <ul>
+        <li class="selected"><a href="/">Mes événements</a></li>
+        <li><a href="/application/newjugevent">Créer un événement</a></li>
+        <li><a href="/public/about.html">A propos</a></li>
+        <li class="subscribe"><a href="#">RSS</a></li>
+    </ul>
 
+</div>
+<div class="p20">&nbsp;</div>
+<div class="p20">&nbsp;</div>
 
+<div class="container_12">
+    <div class="grid_8 prefix_2">
 
-<div id="content">
-    <div id="mainContent">
-        <section>
-            <h3>A propos</h3>
-            GeekEvent est un projet avec deux objectifs distincts :<br/>
-            - proposer un outil aux Java User Group pour gérer les inscriptions à leurs soirées<br/>
-            - servir d'application d'exemple du framework <a href="http://www.playframework.org/" target="_blank">Play! Framework</a> en mettant le code source
-            librement sur GitHub<br/>
+        <h3>A propos</h3>
+        GeekEvent est un projet avec deux objectifs distincts :<br/>
+        - proposer un outil aux Java User Group pour gérer les inscriptions à leurs soirées<br/>
+        - servir d'application d'exemple du framework <a href="http://www.playframework.org/" target="_blank">Play!
+        Framework</a> en mettant le code source
+        librement sur GitHub<br/>
 
-
-        </section>
     </div>
 
+    <div class="clear">&nbsp</div>
+    <div class="p20">&nbsp</div>
+    <div class="grid_12 footer">
+        <em>Copyright(c) 2010 Nicolas Martignole - Tous droits réservés - Code source distribué en licence AGPL</em>
+    </div>
+    <div class="clear">&nbsp</div>
 
-</div>        </section>
-
-        <footer>
-            <em>Copyright 2010 - N.Martignole </em>
-
-        </footer>
-    </body>
+</body>
 </html>
+

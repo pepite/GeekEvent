@@ -289,3 +289,12 @@ form input[type="submit"] {
     padding-bottom:5px;
     margin-bottom:10px;
 }
+
+/* css for timepicker */
+#ui-timepicker-div dl{ text-align: left; }
+#ui-timepicker-div dl dt{ height: 25px; }
+#ui-timepicker-div dl dd{ margin: -25px 0 10px 65px; }
+
+.p20 {
+    padding-bottom:20px;
+}

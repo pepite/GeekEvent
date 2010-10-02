@@ -22,15 +22,14 @@
 package models;
 
 import org.hibernate.annotations.GenericGenerator;
-import play.data.validation.Max;
-import play.data.validation.MaxSize;
-import play.data.validation.Required;
+import play.data.validation.*;
 import play.db.jpa.JPASupport;
 import play.db.jpa.Model;
 import play.i18n.Messages;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.Set;
 
 /**
@@ -46,10 +45,10 @@ public class JugEvent extends Model {
     public Long id;
 
     @Required
-    @Max(value = 255)
+    @MaxSize(value = 255)
     public String title;
 
-    @Max(value = 255)
+    @MaxSize(value = 255)
     public String abstractContent;
 
     @Lob
@@ -57,9 +56,13 @@ public class JugEvent extends Model {
     @MaxSize(10000)
     public String description;
 
+    @Required
     @Temporal(TemporalType.TIMESTAMP)
+    @InFuture
     public Date date;
 
+    @Required
+    @Min(1)
     public Integer totalSlots;
 
     @OneToOne
@@ -148,7 +151,6 @@ public class JugEvent extends Model {
         JugEvent jugEvent = (JugEvent) o;
 
         if (id != null ? !id.equals(jugEvent.id) : jugEvent.id != null) return false;
-        if (!title.equals(jugEvent.title)) return false;
 
         return true;
     }
@@ -157,7 +159,6 @@ public class JugEvent extends Model {
     public int hashCode() {
         int result = super.hashCode();
         result = 31 * result + (id != null ? id.hashCode() : 0);
-        result = 31 * result + title.hashCode();
         return result;
     }
 
@@ -167,5 +168,11 @@ public class JugEvent extends Model {
                 "title='" + title + '\'' +
                 ", date=" + date +
                 '}';
+    }
+
+    public void setCreatedBy(JugUser currentUser) {
+        this.createdBy=currentUser;
+        this.eventOrganizer=currentUser;
+        save();
     }
 }

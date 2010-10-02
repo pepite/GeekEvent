@@ -23,7 +23,7 @@ package controllers;
 
 import models.JugEvent;
 import models.JugUser;
-import play.data.validation.Required;
+import play.data.validation.Valid;
 import play.mvc.*;
 
 import java.util.List;
@@ -134,8 +134,6 @@ public class Application extends Controller {
             return;
         }
 
-        System.out.println("Unregister on event found");
-
         String userId = session.get("user-id");
 
         if (userId == null) {
@@ -150,8 +148,108 @@ public class Application extends Controller {
 
         flash.success(result);
 
-         index();
+        index();
     }
 
+
+    /**
+     * Loads the creation form.
+     */
+    public static void newJugEvent() {
+        render();
+    }
+
+
+    /**
+     * Edit a jugEvent
+     *
+     * @param id is the unique id.
+     */
+    public static void editJugEvent(Long id) {
+        JugEvent jugEvent = JugEvent.findById(id);
+        if(jugEvent==null){
+            flash.error("Aucun événement ne correspond à cet id");
+            index();
+        }
+        if (jugEvent.createdBy != currentUser()) {
+            flash.error("Impossible d'éditer un événement dont vous n'êtes pas le propriétaire");
+            index();
+        }
+
+        render(jugEvent);
+    }
+
+    /**
+     * Validates and persists a JugEvent. Please note that Play! Framework is able to turn HTTP params
+     * to a Java object directly, so that we can use Play validation on the rich domai object.
+     *
+     * @param jugEvent is a new event.
+     */
+    public static void saveJugEvent(JugEvent jugEvent) {
+        validation.valid(jugEvent);
+        if (validation.hasErrors()) {
+            if (jugEvent.id != null) {
+                render("@editJugEvent", jugEvent);
+            } else {
+                render("@newJugEvent", jugEvent);
+
+            }
+            return;
+        }
+        if (jugEvent.id != null) {
+            jugEvent.merge();
+        } else {
+            jugEvent.save();
+        }
+        JugUser currentUser = currentUser();
+
+        jugEvent.setCreatedBy(currentUser);
+
+        flash.success("Nouvel événement enregistré");
+        index();
+    }
+
+    private static JugUser currentUser() {
+        String userId = session.get("user-id");
+        JugUser currentUser = JugUser.findById(userId);
+        notFoundIfNull(currentUser);
+        return currentUser;
+    }
+
+    /**
+     * Updates an existing event.
+     * Stuffs that are not usual :
+     * - the jugEvent is a template object that is filled automaticall by Play!
+     * with params from the view, to perfom the validation
+     * - If the form params are not valid we call update, we need to pass
+     * again the id. Since the id is extracted on jugEven in the editJugEven view
+     * then the id is empty.
+     * - the 'edit' is able to extract params from the HTTP request and
+     * is used to update the entity loaded from DB.
+     * <p/>
+     * TODO : the edit pattern with Play! is not very nice
+     */
+    public static void updateJugEvent(Long id, @Valid JugEvent jugEvent) {
+        if (validation.hasErrors()) {
+            if (request.isAjax()) error("Invalid value");
+            jugEvent.id = id;
+            render("@editJugEvent", jugEvent);
+        }
+        JugEvent jugEventFromDB = JugEvent.findById(id);
+        JugUser currentUser = currentUser();
+        if (jugEventFromDB.createdBy != currentUser) {
+            flash.error("Impossible d'éditer un événement dont vous n'êtes pas le propriétaire");
+            index();
+        }
+
+        jugEventFromDB.edit("jugEvent", params);
+        jugEventFromDB.save();
+
+
+        flash.success("Evenement mis à jour");
+
+        index();
+
+    }
 
 }

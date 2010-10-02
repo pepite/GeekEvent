@@ -35,30 +35,34 @@ JugEvent(j1):
     totalSlots: 5
     eventOrganizer: u4
     participants: [u4,u5]
+    createdBy: u4
 
 JugEvent(j2):
     title: Jug Summer Camp
     abstractContent: Une journée pour la rentrée.
     description: Présentation par O.Mallassi et M.Filguiere
-    date: 2010-09-10 09:00:00
+    date: 2010-10-13 09:40:00
     totalSlots: 210
     eventOrganizer: u5
     participants: [u4,u5]
+    createdBy: u5
 
 JugEvent(j3):
     title: Soirée créé par Nicolas
-    abstractContent: Un exemple de soirée créé par l'utilisateur nicolas@test.fr
-    description: Voici un exemple d'événement créé par l'utilisateur nicolas@test.fr
-    date: 2010-09-10 09:00:00
+    abstractContent: Test court
+    description: Test long
+    date: 2010-10-10 09:00:00
     totalSlots: 210
     eventOrganizer: u5
-    participants:  [u4,u1,u2]
+    participants: [u4,u1,u2]
+    createdBy: u5
 
-JugEvent(j3):
+JugEvent(j4):
     title: Exemple de soirée complète
     abstractContent: Un exemple de soirée sans places libres
     description: Cette soirée de test est complète, il n'y a pas de slots de libres.
-    date: 2010-08-02 18:20:00
+    date: 2010-11-12 19:00:00
     totalSlots: 0
     eventOrganizer: u1
-    participants:  [u4,u1,u2]
+    participants: [u4,u1,u2]
+    createdBy: u1

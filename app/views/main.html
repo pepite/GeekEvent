@@ -27,11 +27,14 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <link rel="stylesheet" type="text/css" media="screen" href="@{'/public/stylesheets/grid.css'}">
     <link rel="stylesheet" type="text/css" media="screen" href="@{'/public/stylesheets/main.css'}">
-    <link rel="stylesheet" type="text/css" media="screen" href="@{'/public/stylesheets/ui.toaster.css'}">
+    <link rel="stylesheet" type="text/css" media="screen" href="@{'/public/stylesheets/ui-lightness/jquery-ui-1.8.4.custom.css'}">
     #{get 'moreStyles' /}
     <link rel="shortcut icon" type="image/png" href="@{'/public/images/favicon.png'}">
-    <script src="@{'/public/javascripts/jquery-1.4.2.min.js'}" type="text/javascript" charset="utf-8"></script>
-    <script src="@{'/public/javascripts/jquery.utils.min.js'}" type="text/javascript" charset="utf-8"></script>
+    #{script 'jquery-1.4.2.min.js' /}
+    #{script id:'ui' , src:'jquery-ui-1.8.4.custom.min.js', charset:'utf-8' /}
+    #{script id:'datepicker' , src:'jquery-ui-timepicker-addon-0.5-custom.min.js', charset:'utf-8' /}
+
+
     #{get 'moreScripts' /}
 
 </head>
@@ -44,7 +47,7 @@
 
         <ul>
             <li class="selected"><a href="/">Mes événements</a></li>
-            <li><a href="#">Créer un événement</a></li>
+            <li>#{a @Application.newJugEvent()}Créer un événement#{/a}</li>
             <li><a href="@{'/public/about.html'}">A propos</a></li>
             <li class="subscribe"><a href="#">RSS</a></li>
         </ul>
