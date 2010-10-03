@@ -4,7 +4,7 @@
 #{set pageTitle:'GeekEvent details' /}
 
 <div class="container_12">
-    <div class="grid_7"> 
+    <div class="grid_7">
         <h3>${jugEvent.title}</h3>
         <strong>${jugEvent.abstractContent}</strong><br/><br/>
         <strong>Date :</strong><br/>
@@ -21,12 +21,23 @@
 
     <div class="grid_5">
         <h3>Qui s'est inscrit ?</h3>
+        #{if jugEvent.participants.isEmpty()}
+            Pas de participant pour l'instant.
+        #{/if}
         #{list items:jugEvent.participants, as:'puser'}
-        ${puser.firstName} ${puser.lastName}<br/>
+            ${puser.firstName} ${puser.lastName}<br/>
         #{/list}
-    </div>
 
-   
+         <h3>Et vous ?</h3>
+        #{if currentUser}
+            #{if jugEvent.participants.contains(currentUser)}
+            Vous êtes inscrit - #{a @Event.unregisterThisEvent(jugEvent.id)}Annuler mon inscription#{/a}
+            #{/if}
+            #{else}
+            #{a @Event.registerThisEvent(jugEvent.id)}Je souhaite m'inscrire#{/a}
+            #{/else}
+        #{/if}
+    </div>
 
 
 </div>

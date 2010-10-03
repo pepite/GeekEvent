@@ -8,10 +8,10 @@
     <div class="grid_5">
         <img src="/public/images/accueil.png" alt="Accueil"/><br/>
         #{if currentUser}
-        <p>Bonjour ${session.user-f}, bienvenue sur la version avec RSS Feed</p>
+        <p>Bonjour ${session.user-f}</p>
         #{/if}
         #{else}
-        <p>Bonjour, bienvenue sur la version avec RSS Feed</p>
+        <p>Bonjour</p>
         #{/else}
         #{if flash.success}
         <div class="greenbox">${flash.success}</div>

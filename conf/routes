@@ -1,8 +1,12 @@
 # Copyright 2010 Nicolas Martignole 
 
 # Create a nice url for showing events
-GET /event/{title}/{date}/{jugEventId} Event.show
 GET /event/edit/{id}    Application.editJugEvent
+GET /event/{title}/{date}/{jugEventId} Event.show
+GET /event/{jugEventId} Event.show
+GET /event/unregister/{jugEventId}  Event.unregisterThisEvent
+GET /event/register/{jugEventId}  Event.registerThisEvent
+
 GET /logout Application.logout
 GET /login Application.login
 GET /profile Profile.index

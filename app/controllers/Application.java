@@ -142,7 +142,6 @@ public class Application extends Controller {
      * @param jugEventId is the PK.
      */
     public static void unregisterThisEvent(Long jugEventId) {
-        System.out.println("Unregister :" + jugEventId);
         JugEvent jugEvent = JugEvent.findById(jugEventId);
         if (jugEvent == null) {
             render("Event not found");
@@ -268,6 +267,7 @@ public class Application extends Controller {
      */
     public static JugUser currentUser() {
         String userId = session.get("user-id");
+        if(userId==null) return null;
         JugUser currentUser = JugUser.findById(userId);
         notFoundIfNull(currentUser);
         return currentUser;
