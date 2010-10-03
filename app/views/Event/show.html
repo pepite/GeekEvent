@@ -6,16 +6,14 @@
 <div class="container_12">
     <div class="grid_7">
         <h3>${jugEvent.title}</h3>
-        <strong>${jugEvent.abstractContent}</strong><br/><br/>
-        <strong>Date :</strong><br/>
-        ${jugEvent.date}<br/>
+        <strong>${jugEvent.abstractContent}</strong><br/>
+        Le ${jugEvent.date.format('EEEE dd MMMM yyyy')} à ${jugEvent.date.format('HH:mm')}<br/>
 
         <strong>Description :</strong><br/>
 
-        <p>${jugEvent.description}</p>
+        <p align="justify">${jugEvent.description}</p>
 
-        <strong>Total place :</strong> ${jugEvent.totalSlots}<br/>
-        <strong>Places libres :</strong> ${jugEvent.freeSlots}<br/>
+        <strong>Places libres :</strong> ${jugEvent.freeSlots}/${jugEvent.totalSlots}<br/>
         <strong>Organisé par :</strong> ${jugEvent.createdBy?.firstName} ${jugEvent.createdBy?.lastName}
     </div>
 
