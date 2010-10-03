@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <atom:link href="http://www.express-board.fr/feed" rel="self" type="application/rss+xml" />
+        <title>Geek Event</title>
+        <description>The last event for Geek</description>
+        <link>http://localhost:9000/</link>
+        <lastBuildDate>${new Date().format("EEE, d MMM yyyy HH:mm:ss Z","en-US")}</lastBuildDate>
+        <language>fr</language>
+        <generator>Geek Event</generator>
+
+        #{if jugEvents}
+             #{list items:jugEvents, as:'jugEvent'}
+                <item>
+                    <title>${jugEvent?.title.escapeXml()}</title>
+                    <description>
+                           ${jugEvent?.description}
+                    </description>
+                    <pubDate>${jugEvent?.date.format("EEE, d MMM yyyy HH:mm:ss Z","en-US")}</pubDate>
+                    <link>http://localhost:9000@{Event.show(jugEvent.id)}</link>
+                    <guid>http://localhost:9000@{Event.show(jugEvent.id)}</guid>
+                </item>
+            #{/list}
+        #{/if}
+        #{else}
+            <item>
+               <title>No geek events</title>
+               <description><![CDATA[There is no event]]></description>
+               <pubDate>${new Date().format("EEE, d MMM yyyy HH:mm:ss Z","en-US")}</pubDate>
+            </item>
+        #{/else}
+</channel>
+</rss>
+
+

@@ -32,6 +32,8 @@
    
     #{get 'moreScripts' /}
 
+    <link rel="alternate" type="application/rss+xml" title="RSS 2.0" href="/rss" />
+
 </head>
 <body>
 <div class="grid_12" id="horizontalLogo">
@@ -44,7 +46,7 @@
             <li class="selected"><a href="/">Mes événements</a></li>
             <li>#{a @Application.newJugEvent()}Créer un événement#{/a}</li>
             <li><a href="@{'/public/about.html'}">A propos</a></li>
-            <li class="subscribe">#{a @JugFeed.rss()}RSS#{/a}</li>
+            <li class="subscribe"><a href="/rss">RSS</A></li>
         </ul>
 
 </div>

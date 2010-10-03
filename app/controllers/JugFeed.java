@@ -19,7 +19,10 @@
 
 package controllers;
 
+import models.JugEvent;
 import play.mvc.Controller;
+
+import java.util.List;
 
 /**
  * Controller for the RSS feed
@@ -29,6 +32,7 @@ import play.mvc.Controller;
  */
 public class JugFeed extends Controller {
     public static void rss(){
-        render();
+        List<JugEvent> jugEvents = JugEvent.findAll();
+        render(jugEvents);
     }
 }

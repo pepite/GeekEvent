@@ -7,6 +7,9 @@ GET /logout Application.logout
 GET /login Application.login
 GET /profile Profile.index
 
+# RSS feed
+GET	 /rss   JugFeed.rss(format:'xml')
+
 # Home page
 GET     /                                       Application.index
 
