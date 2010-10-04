@@ -283,3 +283,38 @@ form input[type="submit"] {
     background-image: url('../images/accueil.png');
     background-repeat:no-repeat;
 }
+
+
+.newJugForm form * {
+    margin:0;
+    padding:0;
+
+}
+
+.newJugForm legend {
+	color:#000; /* IE styles legends with blue text by default */
+	*margin-left:-7px; /* A hack that only ie reads to position the legend in the same place cross browser */
+}
+.newJugForm fieldset {
+    padding: 5px 5px 5px 5px;
+    margin-bottom:20px;
+	border:1px solid #dedede; /* Default fieldset borders vary cross browser, so make them the same */
+}
+.newJugForm fieldset div {
+	overflow:hidden; /* Contain the floating elements */
+	display:inline-block; /* Give layout in ie to contain float */
+}
+.newJugForm fieldset div {
+    display:block;
+  padding-bottom:15px;
+} /* Reset element back to block leaving layout in ie */
+.newJugForm label {
+	float:left; /* Take out of flow so the input starts at the same height */
+	width:10em; /* Set a width so the inputs line up */
+    text-align:right;
+    padding-right:5px;
+}
+
+.newJugForm button {
+    margin-left:10em;
+}

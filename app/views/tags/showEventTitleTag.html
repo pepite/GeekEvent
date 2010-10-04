@@ -10,7 +10,7 @@
     #{if _user}
 
             #{if _user.attendeesEvent.contains(_event)}
-                #{a @unregisterThisEvent(_event.id)}Annuler mon inscription#{/a}
+                #{a @unregisterThisEvent(_event.id),class:'ui-widget ui-widget-content'}Annuler mon inscription#{/a}
             #{/if}
             #{else}
                #{a @registerThisEvent(_event.id)}S'inscrire#{/a}

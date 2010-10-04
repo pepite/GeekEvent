@@ -2,68 +2,77 @@
 #{set title:'GeekEvent - New Event' /}
 
 #{set moreStyles:'
-    <link rel="stylesheet" type="text/css" media="screen" href="/public/stylesheets/ui-lightness/jquery-ui-1.8.4.custom.css">        
+<link rel="stylesheet" type="text/css" media="screen"
+      href="/public/stylesheets/ui-lightness/jquery-ui-1.8.4.custom.css">
 ' /}
 #{set moreScripts:'
 <script src="/public/javascripts/jquery-1.4.2.min.js" type="text/javascript" charset="utf-8"></script>
 <script src="/public/javascripts/jquery-ui-1.8.4.custom.min.js" type="text/javascript" charset="utf-8"></script>
-<script src="/public/javascripts/jquery-ui-timepicker-addon-0.5-custom.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="/public/javascripts/jquery-ui-timepicker-addon-0.5-custom.min.js" type="text/javascript"
+        charset="utf-8"></script>
 ' /}
+
 
 <div class="container_12">
     <div class="grid_12">
-        <h3>Nouvel événement</h3>
 
-        #{form @saveJugEvent()}
+        #{form @saveJugEvent(), class:'newJugForm'}
 
-        #{field 'jugEvent.title'}
-        <p>
-            <label>&{field.name}</label>
-            <input type="text" id="${field.id}" name="${field.name}" value="${jugEvent?.title}" class="${field.errorClass}">
-            <span class="error">${field.error}</span>
-        </p>
-        #{/}
+        <fieldset>
+            <legend>Nouvel événement</legend>
 
-        #{field 'jugEvent.abstractContent'}
-        <p>
-            <label>&{field.name}</label>
-            <input type="text" id="${field.id}" name="${field.name}" value="${jugEvent?.abstractContent}" class="${field.errorClass}" maxlength="250">
-            <span class="error">${field.error}</span>
-        </p>
-        #{/}
+            #{field 'jugEvent.title'}
+            <div>
+                <label>&{field.name}</label>
 
-        #{field 'jugEvent.description'}
-        <p>
-            <label>&{field.name}</label>
-            <input type="text" id="${field.id}" name="${field.name}" value="${jugEvent?.description}" class="${field.errorClass}">
-            <span class="error">${field.error}</span>
-        </p>
-        #{/}
+                <input type="text" id="${field.id}" name="${field.name}" value="${jugEvent?.title}"
+                       class="${field.errorClass}">
+                <span class="error ui-corner-all">${field.error}</span>
 
-         #{field 'jugEvent.date'}
-        <p>
-            <label>&{field.name}</label>
-            #{dateTimeField name:'jugEvent.date' /}
-            <span class="error">${field.error}</span>
-        </p>
-        #{/}
+            </div>
+            #{/}
 
+            #{field 'jugEvent.abstractContent'}
+            <div><label>&{field.name}</label>
+                <input type="text" id="${field.id}" name="${field.name}" value="${jugEvent?.abstractContent}"
+                       class="${field.errorClass}" maxlength="250">
+                <span class="error ui-corner-all">${field.error}</span>
+            </div>
+            #{/}
 
-         #{field 'jugEvent.totalSlots'}
-        <p>
-            <label>&{field.name}</label>
-            <input type="text" id="${field.id}" name="${field.name}" value="${jugEvent?.totalSlots}" class="${field.errorClass}">
-            <span class="error">${field.error}</span>
-        </p>
-        #{/}
+            #{field 'jugEvent.description'}
+            <div>
+                <label>&{field.name}</label>
 
-        <input type="submit" value="Enregistrer"/>
+                <textarea type="text" id="${field.id}" name="${field.name}" class="${field.errorClass}">${jugEvent?.description}</textarea>
+                <br/>
+                <span class="error ui-corner-all">${field.error}</span>
+
+            </div>
+            #{/}
+
+            #{field 'jugEvent.date'}
+            <div><label>&{field.name}</label>#{dateTimeField name:'jugEvent.date' /}</div>
+            #{/}
+
+            #{field 'jugEvent.totalSlots'}
+            <div><label>&{field.name}</label>
+                <input type="text" id="${field.id}" name="${field.name}" value="${jugEvent?.totalSlots}"
+                       class="${field.errorClass}">
+                <span class="error ui-corner-all">${field.error}</span></div>
+            #{/}
+
+            <div>
+                <button id="button" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only">
+                    <span class="ui-button-text">Enregistrer</span>
+            </div>
+            </button>
+        </fieldset>
 
         #{/form}
 
     </div>
+    <div class="clear">&nbsp;</div>
 
-    <div class="clear"></div>
-    <div class="p20"></div
 
 </div>
