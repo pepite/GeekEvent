@@ -5,6 +5,7 @@
 
 
 <div class="container_12">
+
     <div class="grid_5">
         <img src="/public/images/accueil.png" alt="Accueil"/><br/>
         #{if currentUser}
@@ -37,9 +38,10 @@
         #{/if}
 
 
-    #{ifnot currentUser}
+        #{ifnot currentUser}
 
         <h3>Authentifiez-vous</h3>
+
         <p>Pour vous inscrire à un événement ou pour proposer un nouvel événement, merci de vous authentifier :</p>
         #{form @Application.authenticate()}
 
@@ -58,12 +60,12 @@
         <em>Essayez les comptes de démonstration nicolas@demo.fr/demo et antonio@demo.fr/demo</em>
 
         #{/form}
-    #{/ifnot}
+        #{/ifnot}
 
     </div>
 
 
-    <div class="grid_5">
+    <div class="grid_7">
         <img src="/public/images/prochainevenements.png" alt="Prochains Evenements"/>
 
         <br/>
@@ -73,8 +75,4 @@
 
 
     </div>
-
-    <div class="clear"></div>
-    <div class="p20"></div>
-
 </div>
