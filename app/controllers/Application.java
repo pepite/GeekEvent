@@ -250,7 +250,7 @@ public class Application extends Controller {
             index();
         }
 
-        jugEventFromDB.edit("jugEvent", params);
+        jugEventFromDB.edit("jugEvent", params.all());
         jugEventFromDB.save();
 
 

@@ -24,11 +24,10 @@ package models;
 import org.apache.commons.codec.digest.DigestUtils;
 import org.apache.commons.lang.RandomStringUtils;
 import org.hibernate.annotations.GenericGenerator;
-import org.hibernate.validator.NotNull;
 import play.data.validation.Email;
 import play.data.validation.MaxSize;
 import play.data.validation.Required;
-import play.db.jpa.JPASupport;
+import play.db.jpa.GenericModel;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -41,7 +40,7 @@ import java.util.Set;
  * @since 9 sept. 2010 20:18:12
  */
 @Entity
-public class JugUser extends JPASupport {
+public class JugUser extends GenericModel {
     @Id
     @GeneratedValue(generator = "system-uuid")
     @GenericGenerator(name = "system-uuid", strategy = "uuid")
@@ -91,8 +90,8 @@ public class JugUser extends JPASupport {
         this.password = RandomStringUtils.randomAlphanumeric(8);
         this.creationDate = new Date();
         this.emailConfirmed = false;
-        if(email!=null){
-            this.gravatarId= DigestUtils.md5Hex(email.trim().toLowerCase());
+        if (email != null) {
+            this.gravatarId = DigestUtils.md5Hex(email.trim().toLowerCase());
         }
     }
 
@@ -167,6 +166,6 @@ public class JugUser extends JPASupport {
 
     @Override
     public String toString() {
-        return  firstName + " " + lastName ;
+        return firstName + " " + lastName;
     }
 }

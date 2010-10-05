@@ -40,10 +40,6 @@ import java.util.Set;
  */
 @Entity
 public class JugEvent extends Model {
-    @Id
-    @GeneratedValue
-    public Long id;
-
     @Required
     @MaxSize(value = 255)
     public String title;
